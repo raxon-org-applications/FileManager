@@ -37,9 +37,27 @@ trait Main {
             if(property_exists($options->frontend, 'host')){
                 if(property_exists($options->frontend->host, 'name')){
                     $has_frontend = true;
+                    $frontend_options = [
+                        'where' => [
+                            [
+                                'value' => $options->frontend->host->name,
+                                'attribute' => 'name',
+                                'operator' => '===',
+                            ]
+                        ]
+                    ];
                 }
                 if(property_exists($options->frontend->host, 'uuid')){
                     $has_frontend = true;
+                    $frontend_options = [
+                        'where' => [
+                            [
+                                'value' => $options->frontend->host->uuid,
+                                'attribute' => 'uuid',
+                                'operator' => '===',
+                            ]
+                        ]
+                    ];
                 }
             }
         }
@@ -48,9 +66,27 @@ trait Main {
             if(property_exists($options->backend, 'host')){
                 if(property_exists($options->backend->host, 'name')){
                     $has_backend = true;
+                    $backend_options = [
+                        'where' => [
+                            [
+                                'value' => $options->backend->host->name,
+                                'attribute' => 'name',
+                                'operator' => '===',
+                            ]
+                        ]
+                    ];
                 }
                 if(property_exists($options->backend->host, 'uuid')){
                     $has_backend = true;
+                    $backend_options = [
+                        'where' => [
+                            [
+                                'value' => $options->backend->host->uuid,
+                                'attribute' => 'uuid',
+                                'operator' => '===',
+                            ]
+                        ]
+                    ];
                 }
             }
         }
@@ -62,16 +98,10 @@ trait Main {
         }
         $class = 'System.Host';
         $node = new Node($object);
-        $record_options = [
-            'where' => [
-                [
-                    'value' => $options->frontend->host->name,
-                    'attribute' => 'name',
-                    'operator' => '===',
-                ]
-            ]
-        ];
-        $response = $node->record($class, $node->role_system(), $record_options);
+
+        $response = $node->record($class, $node->role_system(), $frontend_options);
+        d($response);
+        $response = $node->record($class, $node->role_system(), $backend_options);
         ddd($response);
 
     }
