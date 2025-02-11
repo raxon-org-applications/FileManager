@@ -99,9 +99,9 @@ trait Main {
         $class = 'System.Host';
         $node = new Node($object);
 
-        $response = $node->record($class, $node->role_system(), $frontend_options);
+        $response_frontend = $node->record($class, $node->role_system(), $frontend_options);
         d($response);
-        $response = $node->record($class, $node->role_system(), $backend_options);
+        $response_backend = $node->record($class, $node->role_system(), $backend_options);
         d($response);
         $dir_read = $object->config('project.dir.vendor') .
             $object->request('package') .
@@ -113,6 +113,10 @@ trait Main {
         ;
         $dir = new Dir();
         $read = $dir->read($dir_read, true);
+
+        ddd($object->config('project.dir.domain'));
+
+//        $dir_target = $response_frontend['node']
         foreach($read as $nr => $file){
             d($file);
         }
