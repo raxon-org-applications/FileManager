@@ -108,19 +108,23 @@ trait Main {
             $object->config('dictionary.application') .
             $object->config('ds')
         ;
+        $dir_target = $object->config('project.dir.domain') .
+            $response_frontend['node']->name .
+            $object->config('ds') .
+            $object->config('dictionary.application') .
+            $object->config('ds') .
+            'Filemanager' .
+            $object->config('ds')
+        ;
         $dir = new Dir();
         $read = $dir->read($dir_read, true);
-
-        ddd($object->config('project.dir.domain'));
-
-//        $dir_target = $response_frontend['node']
         foreach($read as $nr => $file){
+            $explode = explode($dir_read, $file->url, 2);
+            if(array_key_exists(1, $explode)){
+                $file->target = $dir_target . $explode[1];
+            }
             d($file);
         }
-
-
-
-
     }
 
 }
