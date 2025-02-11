@@ -32,17 +32,33 @@ trait Main {
         if($object->config(Config::POSIX_ID) !== 0){
             return;
         }
-        $has_host = false;
-        if(property_exists($options, 'host')){
-            if(property_exists($options->host, 'name')){
-                $has_host = true;
-            }
-            if(property_exists($options->host, 'uuid')){
-                $has_host = true;
+        $has_frontend = false;
+        if(property_exists($options, 'frontend')){
+            if(property_exists($options, 'host')){
+                if(property_exists($options->host, 'name')){
+                    $has_frontend = true;
+                }
+                if(property_exists($options->host, 'uuid')){
+                    $has_frontend = true;
+                }
             }
         }
-        if($has_host === false){
-            throw new Exception('Host option is required (host.name || host.uuid), aborting...');
+        $has_backend = false;
+        if(property_exists($options, 'backend')){
+            if(property_exists($options, 'host')){
+                if(property_exists($options->host, 'name')){
+                    $has_backend = true;
+                }
+                if(property_exists($options->host, 'uuid')){
+                    $has_backend = true;
+                }
+            }
+        }
+        if($has_frontend === false){
+            throw new Exception('Frontend.host option is required (frontend.host.name || frontend.host.uuid), aborting...');
+        }
+        if($has_backend === false){
+            throw new Exception('Backend.host option is required (backend.host.name || backend.host.uuid), aborting...');
         }
     }
 
