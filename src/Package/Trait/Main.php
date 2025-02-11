@@ -156,7 +156,7 @@ trait Main {
                         $data = new Data();
                         $parse = new Parse($object, $data);
                         $options = (object) [
-                            'source' => $file->url,
+                            'source' => $file->url, //used in TemplateExceptions
                         ];
                         $content = $parse->compile(File::read($file->url), null, $options);
                         d($file);
