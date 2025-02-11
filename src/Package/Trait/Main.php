@@ -5,6 +5,7 @@ use Raxon\App;
 use Raxon\Config;
 
 use Raxon\Exception\FileWriteException;
+use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
 use Raxon\Module\Event;
