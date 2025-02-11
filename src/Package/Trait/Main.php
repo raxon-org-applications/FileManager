@@ -137,7 +137,11 @@ trait Main {
         foreach($read as $nr => $file){
             if($file->type === File::TYPE){
                 if(!File::exist($file->target)){
-                    ddd($file);
+                    $file->extension = File::extension($file->target);
+                    $explode = explode('.rax', $file->extension, 2);
+                    if(array_key_exists(1, $explode)){
+                        ddd($explode);
+                    }
                     /*
                     File::permission($object, [
                         'target' => $file->target,
