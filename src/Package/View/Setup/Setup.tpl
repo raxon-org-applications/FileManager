@@ -1,7 +1,7 @@
 {{R3M}}
-{{$register = Package.Raxon.App.FileManager:Init:register()}}
+{{$register = Package.Raxon.App.Filemanager:Init:register()}}
 {{if(!is.empty($register))}}
-{{Package.Raxon.App.FileManager:Import:role.system()}}
+{{Package.Raxon.App.Filemanager:Import:role.system()}}
 {{$options = options()}}
-{{Package.Raxon.App.FileManager:Main:install($options)}}
+{{Package.Raxon.App.Filemanager:Main:install($options)}}
 {{/if}}
