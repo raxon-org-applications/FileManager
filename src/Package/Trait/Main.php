@@ -98,11 +98,8 @@ trait Main {
         }
         $class = 'System.Host';
         $node = new Node($object);
-
         $response_frontend = $node->record($class, $node->role_system(), $frontend_options);
-        d($response);
         $response_backend = $node->record($class, $node->role_system(), $backend_options);
-        d($response);
         $dir_read = $object->config('project.dir.vendor') .
             $object->request('package') .
             $object->config('ds') .
