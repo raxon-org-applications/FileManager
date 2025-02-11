@@ -123,7 +123,28 @@ trait Main {
             if(array_key_exists(1, $explode)){
                 $file->target = $dir_target . $explode[1];
             }
-            d($file);
+        }
+        foreach($read as $nr => $file){
+            if($file->type === Dir::TYPE){
+                if(!File::exist($file->target)){
+                    Dir::create($file->target, Dir::CHMOD);
+                    File::permission($object, [
+                        'target' => $file->target,
+                    ]);
+                }
+            }
+        }
+        foreach($read as $nr => $file){
+            if($file->type === File::TYPE){
+                if(!File::exist($file->target)){
+                    ddd($file);
+                    /*
+                    File::permission($object, [
+                        'target' => $file->target,
+                    ]);
+                    */
+                }
+            }
         }
     }
 
