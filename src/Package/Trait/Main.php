@@ -32,6 +32,7 @@ trait Main {
         if($object->config(Config::POSIX_ID) !== 0){
             return;
         }
+        breakpoint($options);
         $has_host = false;
         if(property_exists($options, 'host.name')){
             $has_host = true;
