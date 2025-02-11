@@ -102,7 +102,14 @@ trait Main {
         $response = $node->record($class, $node->role_system(), $frontend_options);
         d($response);
         $response = $node->record($class, $node->role_system(), $backend_options);
-        ddd($response);
+        d($response);
+        $dir_read = $object->config('project.dir.vendor');
+        ddd($dir_read);
+        $dir = new Dir();
+        $read = $dir->read();
+
+
+
 
     }
 
