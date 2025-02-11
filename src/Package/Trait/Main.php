@@ -104,6 +104,7 @@ trait Main {
         $response = $node->record($class, $node->role_system(), $backend_options);
         d($response);
         $dir_read = $object->config('project.dir.vendor');
+        d($object->config());
         ddd($dir_read);
         $dir = new Dir();
         $read = $dir->read();
