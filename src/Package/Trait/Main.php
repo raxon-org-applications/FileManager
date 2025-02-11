@@ -153,12 +153,13 @@ trait Main {
                         if(array_key_exists(1, $explode)){
                             $file->target = $explode[0];
                         }
-                        $data = new Data();
-                        $parse = new Parse($object, $data);
                         $options = (object) [
                             'source' => $file->url, //used in TemplateExceptions
                         ];
-                        $content = $parse->compile(File::read($file->url), null, $options);
+                        $data = new Data();
+                        $parse = new Parse($object, $data, null, $options);
+
+                        $content = $parse->compile(File::read($file->url));
                         d($file);
                         ddd($content);
                     } else {
