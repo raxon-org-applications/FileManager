@@ -60,6 +60,20 @@ trait Main {
         if($has_backend === false){
             throw new Exception('Backend.host option is required (backend.host.name || backend.host.uuid), aborting...');
         }
+        $class = 'System.Host';
+        $node = new Node($object);
+        $record_options = [
+            'where' => [
+                [
+                    'value' => $options->frontend->host->name,
+                    'attribute' => 'name',
+                    'operator' => '===',
+                ]
+            ]
+        ];
+        $response = $node->record($class, $node->role_system(), $record_options);
+        ddd($response);
+
     }
 
 }
