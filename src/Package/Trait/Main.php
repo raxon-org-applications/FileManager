@@ -149,6 +149,8 @@ trait Main {
                     $explode = explode('.rax', $file->extension, 2);
                     if(array_key_exists(1, $explode)){
                         ddd($explode);
+                    } else {
+                        ddd($file);
                     }
                     /*
                     File::permission($object, [
