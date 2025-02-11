@@ -168,18 +168,14 @@ trait Main {
                             $data->set('options.backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         }
                         $parse = new Parse($object, $data, null, $options);
-
                         $content = $parse->compile(File::read($file->url), $data);
-                        d($file);
-                        ddd($content);
+                        File::write($file->target, $content);
                     } else {
-                        ddd($file);
+                        File::copy($file->url, $file->target);
                     }
-                    /*
                     File::permission($object, [
                         'target' => $file->target,
                     ]);
-                    */
                 }
             }
         }
