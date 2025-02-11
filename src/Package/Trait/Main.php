@@ -146,9 +146,12 @@ trait Main {
             if($file->type === File::TYPE){
                 if(!File::exist($file->target)){
                     $file->extension = File::extension($file->target);
-                    $explode = explode('.rax', $file->extension, 2);
-                    if(array_key_exists(1, $explode)){
-                        ddd($explode);
+                    if($file->extension === 'rax'){
+                        $explode = explode('.rax', $file->target, 2);
+                        if(array_key_exists(1, $explode)){
+                            $file->target = $explode[0];
+                        }
+                        ddd($file);
                     } else {
                         ddd($file);
                     }
