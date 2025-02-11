@@ -1,5 +1,5 @@
+{{literal}}
 {{R3M}}
-{{/literal}}
 {{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
 {{script('module')}}
 import { directory } from "/Application/FileManager/Module/Directory.js";
