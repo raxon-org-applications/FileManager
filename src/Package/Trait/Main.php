@@ -32,10 +32,14 @@ trait Main {
         if($object->config(Config::POSIX_ID) !== 0){
             return;
         }
-        if(
-            !property_exists($options, 'host.name') &&
-            !property_exists($options, 'host.uuid')
-        ){
+        $has_host = false;
+        if(property_exists($options, 'host.name')){
+            $has_host = true;
+        }
+        if(property_exists($options, 'host.uuid')){
+            $has_host = true;
+        }
+        if($has_host === false){
             throw new Exception('Host option is required (host.name || host.uuid), aborting...');
         }
     }
