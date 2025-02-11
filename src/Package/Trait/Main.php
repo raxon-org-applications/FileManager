@@ -111,10 +111,11 @@ trait Main {
             $object->config('dictionary.application') .
             $object->config('ds')
         ;
-        d($object->request());
-        ddd($dir_read);
         $dir = new Dir();
-        $read = $dir->read();
+        $read = $dir->read($dir_read, true);
+        foreach($read as $nr => $file){
+            d($file);
+        }
 
 
 
