@@ -157,20 +157,19 @@ trait Main {
                             'source' => $file->url, //used in TemplateExceptions
                         ];
                         $data = new Data();
-                        $options->frontend = (object) [];
-                        $options->backend = (object) [];
                         if(!property_exists($response_frontend['node'],'subdomain')){
-                            $options->frontend->host = $response_frontend['node']->domain . '.' . $response_frontend['node']->extension;
+                            $data->set('options.backend.host', $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
                         } else {
-                            $options->frontend->host = $response_frontend['node']->subdomain . '.' . $response_frontend['node']->domain . '.' . $response_frontend['node']->extension;
+                            $data->set('options.backend.host', $response_frontend['node']->subdomain . '.' . $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
                         }
                         if(!property_exists($response_backend['node'],'subdomain')){
-                            $options->backend->host = $response_backend['node']->domain . '.' . $response_backend['node']->extension;
+                            $data->set('options.backend.host', $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         } else {
-                            $options->backend->host = $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension;
+                            $data->set('options.backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         }
                         $parse = new Parse($object, $data, null, $options);
-                        $content = $parse->compile(File::read($file->url));
+
+                        $content = $parse->compile(File::read($file->url), $data);
                         d($file);
                         ddd($content);
                     } else {
