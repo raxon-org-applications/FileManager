@@ -1,0 +1,67 @@
+{
+  "System": {
+    "Route": [
+      {
+        "name": "application-file-manager",
+        "path": "\/Application\/FileManager\/",
+        "host": "{{$options.host}}",
+        "controller": "Domain:{{controller.host($options.host)}}:Application:FileManager:Controller:Manager:main",
+        "priority": 3001,
+        "method": [
+          "GET",
+          "POST"
+        ]
+      },
+      {
+        "name": "application-file-manager-address-bar",
+        "path": "\/Application\/FileManager\/AddressBar\/",
+        "host": "{{$options.host}}",
+        "controller": "Domain:{{controller.host($options.host)}}:Application:FileManager:Controller:Manager:address.bar",
+        "priority": 3002,
+        "method": [
+          "GET",
+          "POST"
+        ]
+      },
+      {
+        "name": "application-file-manager-list-directory",
+        "path": "\/Application\/FileManager\/List\/Directory\/",
+        "host": "{{$options.host}}",
+        "controller": "Domain:{{controller.host($options.host)}}:Application:FileManager:Controller:Manager:list.directory",
+        "priority": 3003,
+        "method": [
+          "GET",
+          "POST"
+        ]
+      },
+      {
+        "name": "application-file-manager-list-file",
+        "path": "\/Application\/FileManager\/List\/File\/",
+        "host": "{{$options.host}}",
+        "controller": "Domain:{{controller.host($options.host)}}:Application:FileManager:Controller:Manager:list.file",
+        "priority": 3004,
+        "method": [
+          "GET",
+          "POST"
+        ]
+      },
+      {
+        "name": "application-file-manager-file-open",
+        "path": "\/Application\/FileManager\/File\/Open\/",
+        "host": "{{$options.host}}",
+        "controller": "Domain:{{controller.host($options.host)}}:Application:FileManager:Controller:Manager:file.open",
+        "priority": 3005,
+        "method": [
+          "GET",
+          "POST"
+        ]
+      },
+      {
+        "name": "application-file-manager-icon",
+        "url": "\/Application\/FileManager\/Icon\/Icon.png",
+        "host": "{{$options.host}}",
+        "priority": 3006
+      }
+    ]
+  }
+}
