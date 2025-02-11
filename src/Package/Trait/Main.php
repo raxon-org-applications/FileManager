@@ -158,7 +158,7 @@ trait Main {
                         $options = (object) [
                             'source' => $file->url,
                         ];
-                        $content = $parse->compile(File::read($file->url));
+                        $content = $parse->compile(File::read($file->url), null, $options);
                         d($file);
                         ddd($content);
                     } else {
