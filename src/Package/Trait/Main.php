@@ -108,14 +108,22 @@ trait Main {
             $object->config('dictionary.application') .
             $object->config('ds')
         ;
-        $dir_target = $object->config('project.dir.domain') .
+        $dir_application = $object->config('project.dir.domain') .
             $response_frontend['node']->name .
             $object->config('ds') .
             $object->config('dictionary.application') .
-            $object->config('ds') .
+            $object->config('ds')
+        ;
+        $dir_target = $dir_application .
             'Filemanager' .
             $object->config('ds')
         ;
+        if(!File::exist($dir_target)){
+            Dir::create($dir_target, Dir::CHMOD);
+            File::permission($object, [
+                'target' => $dir_target,
+            ]);
+        }
         $dir = new Dir();
         $read = $dir->read($dir_read, true);
         foreach($read as $nr => $file){
