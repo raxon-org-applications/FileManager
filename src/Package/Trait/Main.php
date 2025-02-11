@@ -157,15 +157,15 @@ trait Main {
                             'source' => $file->url, //used in TemplateExceptions
                         ];
                         $data = new Data();
-                        if(!array_key_exists('subdomain', $response_frontend['node'])){
-                            $data->set('options.frontend.host', $response_frontend['node']['domain'] . '.' . $response_frontend['node']['extension']);
+                        if(!property_exists($response_frontend['node'],'subdomain')){
+                            $data->set('options.backend.host', $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
                         } else {
-                            $data->set('options.frontend.host', $response_frontend['node']['subdomain'] . '.' . $response_frontend['node']['domain'] . '.' . $response_frontend['node']['extension']);
+                            $data->set('options.backend.host', $response_frontend['node']->subdomain . '.' . $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
                         }
-                        if(!array_key_exists('subdomain', $response_backend['node'])){
-                            $data->set('options.backend.host', $response_backend['node']['domain'] . '.' . $response_backend['node']['extension']);
+                        if(!property_exists($response_backend['node'],'subdomain')){
+                            $data->set('options.backend.host', $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         } else {
-                            $data->set('options.backend.host', $response_backend['node']['subdomain'] . '.' . $response_backend['node']['domain'] . '.' . $response_backend['node']['extension']);
+                            $data->set('options.backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         }
                         $parse = new Parse($object, $data, null, $options);
 
