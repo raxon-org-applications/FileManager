@@ -1,6 +1,6 @@
 <?php
 
-namespace Package\Raxon\Application\FileManager\Controller;
+namespace Package\Raxon\App\FileManager\Controller;
 
 use Raxon\App;
 use Raxon\Config;
@@ -22,8 +22,8 @@ class Cli extends Controller {
     const DIR = __DIR__ . '/';
     const MODULE_INFO = 'Info';
     const INFO = [
-        '{{binary()}} raxon/application filemanager',
-        '{{binary()}} raxon/application filemanager setup',
+        '{{binary()}} raxon_app filemanager',
+        '{{binary()}} raxon_app filemanager setup',
     ];
 
     /**

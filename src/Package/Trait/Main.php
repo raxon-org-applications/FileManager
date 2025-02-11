@@ -1,5 +1,5 @@
 <?php
-namespace Package\Raxon\Application\FileManager\Trait;
+namespace Package\Raxon\App\FileManager\Trait;
 
 use Raxon\App;
 use Raxon\Config;
