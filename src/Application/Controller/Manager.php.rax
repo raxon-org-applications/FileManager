@@ -1,5 +1,5 @@
 <?php
-namespace Domain\{{namespace.host($options.frontend.host)}}\Application\FileManager\Controller;
+namespace Domain\{{php.namespace.host($options.frontend.host)}}\Application\FileManager\Controller;
 
 use Raxon\App;
 use Raxon\Module\Controller;
