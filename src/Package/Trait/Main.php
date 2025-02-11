@@ -103,8 +103,8 @@ trait Main {
         d($response);
         $response = $node->record($class, $node->role_system(), $backend_options);
         d($response);
-        $dir_read = $object->config('project.dir.vendor');
-        d($object->config());
+        $dir_read = $object->config('project.dir.vendor') . 'raxon_app';
+        d($object->request());
         ddd($dir_read);
         $dir = new Dir();
         $read = $dir->read();
