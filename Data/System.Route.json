@@ -4,8 +4,8 @@
       {
         "#class": "System.Route",
         "name": "raxon-org-cli-application-filemanager",
-        "path": "raxon\/application\/filemanager",
-        "controller": "Package:Raxon:Example:Controller:Cli:run",
+        "path": "raxon_app\/filemanager",
+        "controller": "Package:Raxon:App:FileManager:Controller:Cli:run",
         "priority": 1001,
         "request": {
           "language": "en"
