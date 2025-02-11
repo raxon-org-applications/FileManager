@@ -1,6 +1,6 @@
 <?php
 
-namespace Package\Raxon\App\FileManager\Controller;
+namespace Package\Raxon\App\Filemanager\Controller;
 
 use Raxon\App;
 use Raxon\Config;
