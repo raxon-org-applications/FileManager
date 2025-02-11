@@ -33,7 +33,7 @@ trait Main {
             return;
         }
         if(
-            !property_exists($options, 'host.name') ||
+            !property_exists($options, 'host.name') &&
             !property_exists($options, 'host.uuid')
         ){
             throw new Exception('Host option is required (host.name || host.uuid), aborting...');
