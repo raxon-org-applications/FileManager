@@ -34,22 +34,22 @@ trait Main {
         }
         $has_frontend = false;
         if(property_exists($options, 'frontend')){
-            if(property_exists($options, 'host')){
-                if(property_exists($options->host, 'name')){
+            if(property_exists($options->frontend, 'host')){
+                if(property_exists($options->frontend->host, 'name')){
                     $has_frontend = true;
                 }
-                if(property_exists($options->host, 'uuid')){
+                if(property_exists($options->frontend->host, 'uuid')){
                     $has_frontend = true;
                 }
             }
         }
         $has_backend = false;
         if(property_exists($options, 'backend')){
-            if(property_exists($options, 'host')){
-                if(property_exists($options->host, 'name')){
+            if(property_exists($options->backend, 'host')){
+                if(property_exists($options->backend->host, 'name')){
                     $has_backend = true;
                 }
-                if(property_exists($options->host, 'uuid')){
+                if(property_exists($options->backend->host, 'uuid')){
                     $has_backend = true;
                 }
             }
