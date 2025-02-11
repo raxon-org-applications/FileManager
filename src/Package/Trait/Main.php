@@ -155,6 +155,9 @@ trait Main {
                         }
                         $data = new Data();
                         $parse = new Parse($object, $data);
+                        $options = (object) [
+                            'source' => $file->url,
+                        ];
                         $content = $parse->compile(File::read($file->url));
                         d($file);
                         ddd($content);
