@@ -10,10 +10,11 @@ use Raxon\Module\Core;
 use Raxon\Module\Event;
 use Raxon\Module\File;
 use Raxon\Module\Host;
-use Raxon\Module\Parse;
 use Raxon\Module\Sort;
 
 use Raxon\Node\Model\Node;
+
+use Package\RaXon\Parse\Service\Parse;
 
 use Exception;
 
@@ -151,7 +152,11 @@ trait Main {
                         if(array_key_exists(1, $explode)){
                             $file->target = $explode[0];
                         }
-                        ddd($file);
+                        $data = new Data();
+                        $parse = new Parse($object, $data);
+                        $content = $parse->compile(File::read($file->url));
+                        d($file);
+                        ddd($content);
                     } else {
                         ddd($file);
                     }
