@@ -1,4 +1,3 @@
-{{R3M}}
 <section name="main">
     <div class="logo">
         <a href="https://www.raxon.org/" title="https://www.raxon.org"><img src="{{config('domain.url')}}Icon/android-chrome-192x192.png" alt="Raxon Logo"></a>

@@ -1,4 +1,3 @@
-{{R3M}}
 {{$request = request()}}
 {{if($request.request === '/')}}
 {{$canonical = config('domain.url')}}

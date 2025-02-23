@@ -1,4 +1,3 @@
-//{{R3M}}
 import { address } from "/Application/FileManager/Module/Address.js";
 import { directory } from "/Application/FileManager/Module/Directory.js";
 import { file } from "/Application/FileManager/Module/File.js";

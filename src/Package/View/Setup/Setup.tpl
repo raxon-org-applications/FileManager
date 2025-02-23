@@ -1,4 +1,3 @@
-{{R3M}}
 {{$register = Package.Raxon.App.Filemanager:Init:register()}}
 {{if(!is.empty($register))}}
 {{Package.Raxon.App.Filemanager:Import:role.system()}}

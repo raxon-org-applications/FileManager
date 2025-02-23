@@ -1,4 +1,3 @@
-{{R3M}}
 {{block.html()}}
 <section id="{{$id}}" name="{{$section.name}}" class="display-none">
     <div class="dialog dialog-{{config('controller.name')}}-main">

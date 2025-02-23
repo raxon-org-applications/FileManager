@@ -1,4 +1,3 @@
-{{R3M}}
 {{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
 {{$request.method = 'replace'}}
 {{$request.target = target.create('section', ['id' => $id])}}

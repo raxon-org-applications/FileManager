@@ -1,4 +1,3 @@
-{{R3M}}
 <html>
     <head>
         <title>HTTP/1.0 500 Internal server error: {{$exception.file}}</title>
