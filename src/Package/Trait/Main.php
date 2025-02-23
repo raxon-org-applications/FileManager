@@ -15,7 +15,7 @@ use Raxon\Module\Sort;
 
 use Raxon\Node\Model\Node;
 
-use Package\Raxon\Parse\Service\Parse;
+use Raxon\Parse\Module\Parse;
 
 use Exception;
 
