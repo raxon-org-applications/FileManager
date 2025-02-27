@@ -12,10 +12,9 @@ use Raxon\Module\Event;
 use Raxon\Module\File;
 use Raxon\Module\Host;
 use Raxon\Module\Sort;
+use Raxon\Module\Parse;
 
 use Raxon\Node\Model\Node;
-
-use Raxon\Parse\Module\Parse;
 
 use Exception;
 
