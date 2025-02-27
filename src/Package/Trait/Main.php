@@ -143,9 +143,10 @@ trait Main {
                 }
             }
         }
+        $patch = $options->patch ?? null;
         foreach($read as $nr => $file){
             if($file->type === File::TYPE){
-                if(!File::exist($file->target)){
+                if(!File::exist($file->target) || $patch !== null){
                     $file->extension = File::extension($file->target);
                     if($file->extension === 'rax'){
                         $explode = explode('.rax', $file->target, 2);
@@ -168,9 +169,14 @@ trait Main {
                         }
                         $parse = new Parse($object, $data, null, $options);
                         $content = $parse->compile(File::read($file->url), $data);
-                        File::delete($file->target);
+                        if($patch !== null) {
+                            File::delete($file->target);
+                        }
                         File::write($file->target, $content);
                     } else {
+                        if($patch !== null) {
+                            File::delete($file->target);
+                        }
                         File::copy($file->url, $file->target);
                     }
                     File::permission($object, [
