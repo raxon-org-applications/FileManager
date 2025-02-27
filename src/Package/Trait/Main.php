@@ -168,9 +168,6 @@ trait Main {
                         }
                         $parse = new Parse($object, $data, null, $options);
                         $content = $parse->compile(File::read($file->url), $data);
-                        if(str_contains($file->url, 'Main.js')){
-                            ddd($content);
-                        }
                         File::write($file->target, $content);
                     } else {
                         File::copy($file->url, $file->target);
