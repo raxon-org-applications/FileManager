@@ -255,9 +255,8 @@ section[name="application-file-manager"] .body div.tree li.active .name {
     background: rgba(0, 0, 0, 0.5);
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 33, 177, 0.4));
     color: rgba(255, 124, 13, 1);
-    border-radius: 10px;
-    border-top: 1px solid rgba(39, 170, 255, 1);
-    border-bottom: 1px solid rgba(39, 170, 255, 1);
+    border-radius: 5px;
+    border: 1px solid rgba(39, 170, 255, 1);
 }
 
 section[name="application-file-manager"] .body div.tree .name {
