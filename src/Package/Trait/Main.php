@@ -178,6 +178,7 @@ trait Main {
                         if($patch !== null) {
                             File::delete($file->target);
                         }
+                        d($content);
                         File::write($file->target, $content);
                     } else {
                         if($patch !== null) {
