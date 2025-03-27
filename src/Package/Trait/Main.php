@@ -172,13 +172,10 @@ trait Main {
                         $clone = clone $object;
                         $clone->data(App::OPTIONS, $data);
                         $parse = new Parse($clone, $data, null, $options);
-                        d($file->url);
-                        d($data);
                         $content = $parse->compile(File::read($file->url), $data);
                         if($patch !== null) {
                             File::delete($file->target);
                         }
-                        d($content);
                         File::write($file->target, $content);
                     } else {
                         if($patch !== null) {
