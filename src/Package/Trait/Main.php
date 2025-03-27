@@ -172,7 +172,7 @@ trait Main {
                         }
                         $clone = clone $object;
                         $clone->data(App::OPTIONS, $data->data());
-                        $parse = new Parse($clone, $data, null, $options);
+                        $parse = new Parse($clone, $data);
                         echo Cli::info('Processing file: ') . $file->url . PHP_EOL;
                         $content = $parse->compile(File::read($file->url), $data);
                         if($patch !== null) {
