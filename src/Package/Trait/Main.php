@@ -8,6 +8,7 @@ use Raxon\Exception\FileWriteException;
 use Raxon\Exception\DirectoryCreateException;
 use Raxon\Exception\ObjectException;
 
+use Raxon\Module\Cli;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
@@ -172,6 +173,7 @@ trait Main {
                         $clone = clone $object;
                         $clone->data(App::OPTIONS, $data->data());
                         $parse = new Parse($clone, $data, null, $options);
+                        echo Cli::info('Processing file: ') . $file->url . PHP_EOL;
                         $content = $parse->compile(File::read($file->url), $data);
                         if($patch !== null) {
                             File::delete($file->target);
