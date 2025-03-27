@@ -169,7 +169,9 @@ trait Main {
                         } else {
                             $data->set('options.backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         }
-                        $parse = new Parse($object, $data, null, $options);
+                        $clone = clone $object;
+                        $clone->options($data);
+                        $parse = new Parse($clone, $data, null, $options);
                         d($file->url);
                         d($data);
                         $content = $parse->compile(File::read($file->url), $data);
