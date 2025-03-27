@@ -170,7 +170,7 @@ trait Main {
                             $data->set('options.backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         }
                         $clone = clone $object;
-                        $clone->data(App::OPTIONS, $data);
+                        $clone->data(App::OPTIONS, $data->data());
                         $parse = new Parse($clone, $data, null, $options);
                         $content = $parse->compile(File::read($file->url), $data);
                         if($patch !== null) {
