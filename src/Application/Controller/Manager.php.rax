@@ -1,5 +1,4 @@
 {{$options = options()}}
-{{dd($options)}}
 <?php
 namespace Domain\{{php.namespace.host($options.frontend.host)}}\Application\FileManager\Controller;
 
