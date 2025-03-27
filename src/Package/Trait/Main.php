@@ -170,6 +170,7 @@ trait Main {
                             $data->set('options.backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         }
                         $parse = new Parse($object, $data, null, $options);
+                        d($file->url);
                         $content = $parse->compile(File::read($file->url), $data);
                         if($patch !== null) {
                             File::delete($file->target);
