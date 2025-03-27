@@ -171,6 +171,7 @@ trait Main {
                         }
                         $parse = new Parse($object, $data, null, $options);
                         d($file->url);
+                        d($data);
                         $content = $parse->compile(File::read($file->url), $data);
                         if($patch !== null) {
                             File::delete($file->target);
