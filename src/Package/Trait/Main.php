@@ -176,7 +176,7 @@ trait Main {
                         echo Cli::info('Processing file: ') . $file->url . PHP_EOL;
                         $file->original_extension = File::extension($file->target);
                         d($file->original_extension);
-
+                        continue;
                         $content = $parse->compile(File::read($file->url), $data);
                         if($patch !== null) {
                             File::delete($file->target);
