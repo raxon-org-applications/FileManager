@@ -183,6 +183,7 @@ trait Main {
                                 }
                                 echo Cli::info('Processing file: ') . $file->target . PHP_EOL;
                                 File::write($file->target, Core::object($content->data(), Core::JSON));
+                                //imports should be in a json file (class => url/contains)
                                 if(str_contains($file->target, 'System.Route')){
                                     $command = 'app raxon/node object import -class=System.Route -url="' . $file->target . '" -patch';
                                     Core::execute($object, $command, $output, $notification);
