@@ -13,7 +13,7 @@ directory.open();
         {{for.each($request.nodeList.tree as $nr => $file)}}
             {{if ($file.has_sub_dir)}}
                 {{$li.class = 'bind indent indent-' + $indent + ' expand'}}
-                {{$li.data.url = server.url({{/literal}}{{$options.backend.host}}{{literal}}) + 'FileSystem/List/Directory/'}}
+                {{$li.data.url = server.url("{{/literal}}{{$options.backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
@@ -21,7 +21,7 @@ directory.open();
                 {{file.manager.tree.directory($file, $li, 'has_sub_dir')}}
             {{else}}
                 {{$li.class = 'bind indent indent-' + $indent}}
-                {{$li.data.url = server.url({{/literal}}{{$options.backend.host}}{{literal}}) + 'FileSystem/List/Directory/'}}
+                {{$li.data.url = server.url("{{/literal}}{{$options.backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
@@ -35,7 +35,7 @@ directory.open();
         {{for.each($request.nodeList as $nr => $file)}}
             {{if ($file.has_sub_dir)}}
                 {{$li.class = 'bind indent indent-' + $indent + ' expand'}}
-                {{$li.data.url = server.url({{/literal}}{{$options.backend.host}}{{literal}}) + 'FileSystem/List/Directory/'}}
+                {{$li.data.url = server.url("{{/literal}}{{$options.backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
@@ -43,7 +43,7 @@ directory.open();
                 {{file.manager.tree.directory($file, $li, 'has_sub_dir')}}
             {{else}}
                 {{$li.class = 'bind indent indent-' + $indent}}
-                {{$li.data.url = server.url({{/literal}}{{$options.backend.host}}{{literal}}) + 'FileSystem/List/Directory/'}}
+                {{$li.data.url = server.url("{{/literal}}{{$options.backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
