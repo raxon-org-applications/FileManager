@@ -178,6 +178,7 @@ trait Main {
                             case 'json':
                                 $clone->data($data);
                                 $content = $clone->parse_read($file->url);
+                                ddd($content);
                                 if($patch !== null) {
                                     File::delete($file->target);
                                 }
