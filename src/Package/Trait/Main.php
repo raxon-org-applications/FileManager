@@ -156,22 +156,22 @@ trait Main {
                         if(array_key_exists(1, $explode)){
                             $file->target = $explode[0];
                         }
-                        $options = (object) [
+                        $data = (object) [
                             'source' => $file->url, //used in TemplateExceptions
                         ];
-                        $data = new Data();
+                        $clone_options = new Data();
                         if(!property_exists($response_frontend['node'],'subdomain')){
-                            $data->set('frontend.host', $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
+                            $clone_options->set('frontend.host', $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
                         } else {
-                            $data->set('frontend.host', $response_frontend['node']->subdomain . '.' . $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
+                            $clone_options->set('frontend.host', $response_frontend['node']->subdomain . '.' . $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
                         }
                         if(!property_exists($response_backend['node'],'subdomain')){
-                            $data->set('backend.host', $response_backend['node']->domain . '.' . $response_backend['node']->extension);
+                            $clone_options->set('backend.host', $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         } else {
-                            $data->set('backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
+                            $clone_options->set('backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         }
                         $clone = clone $object;
-                        $clone->data(App::OPTIONS, $data->data());
+                        $clone->data(App::OPTIONS, $clone_options->data());
                         $parse = new Parse($clone, $data);
                         echo Cli::info('Processing file: ') . $file->url . PHP_EOL;
                         $file->original_extension = File::extension($file->target);
