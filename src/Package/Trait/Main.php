@@ -174,6 +174,9 @@ trait Main {
                         $clone->data(App::OPTIONS, $data->data());
                         $parse = new Parse($clone, $data);
                         echo Cli::info('Processing file: ') . $file->url . PHP_EOL;
+                        $file->original_extension = File::extension($file->target);
+                        d($file->original_extension);
+
                         $content = $parse->compile(File::read($file->url), $data);
                         if($patch !== null) {
                             File::delete($file->target);
