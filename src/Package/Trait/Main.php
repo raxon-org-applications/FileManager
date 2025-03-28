@@ -31,6 +31,8 @@ trait Main {
      */
     public function install($options=[]): void
     {
+        echo 'here';
+        die;
         $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if($object->config(Config::POSIX_ID) !== 0){
@@ -149,7 +151,6 @@ trait Main {
         $patch = $options->patch ?? null;
         foreach($read as $nr => $file){
             if($file->type === File::TYPE){
-                echo Cli::warning('original:') . $file->url . PHP_EOL;
                 if(!File::exist($file->target) || $patch !== null){
                     $file->extension = File::extension($file->target);
                     if($file->extension === 'rax'){
