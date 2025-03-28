@@ -130,7 +130,6 @@ trait Main {
         }
         $dir = new Dir();
         $read = $dir->read($dir_read, true);
-        ddd($read);
         foreach($read as $nr => $file){
             $explode = explode($dir_read, $file->url, 2);
             if(array_key_exists(1, $explode)){
@@ -181,7 +180,6 @@ trait Main {
                                 $clone->data($data);
                                 $content = $clone->parse_read($file->url);
                                 if($patch !== null) {
-                                    echo Cli::error('Deleting file:') . $file->target . PHP_EOL;
                                     File::delete($file->target);
                                 }
                                 echo Cli::info('Processing file:') . $file->target . PHP_EOL;
@@ -201,7 +199,6 @@ trait Main {
                             default:
                                 $content = $parse->compile(File::read($file->url), $data);
                                 if($patch !== null) {
-                                    echo Cli::error('Deleting file:') . $file->target . PHP_EOL;
                                     File::delete($file->target);
                                 }
                                 echo Cli::info('Processing file:') . $file->target . PHP_EOL;
@@ -211,7 +208,6 @@ trait Main {
                         }
                     } else {
                         if($patch !== null) {
-                            echo Cli::error('Deleting file:') . $file->target . PHP_EOL;
                             File::delete($file->target);
                         }
                         echo Cli::debug('Copying file:') . $file->target . PHP_EOL;
