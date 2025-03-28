@@ -5,7 +5,7 @@
                 "name": "application-file-manager",
                 "path": "\/Application\/FileManager\/",
                 "host": "{{options('frontend.host')}}",
-                "controller": "Domain:{{app.controller.host($this.host)}}:Application:FileManager:Controller:Manager:main",
+                "controller": "Domain:{{app.controller.host($this)}}:Application:FileManager:Controller:Manager:main",
                 "priority": 3001,
                 "method": [
                     "GET",
