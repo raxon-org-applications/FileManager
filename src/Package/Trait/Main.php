@@ -184,7 +184,14 @@ trait Main {
                                 echo Cli::info('Processing file: ') . $file->target . PHP_EOL;
                                 File::write($file->target, Core::object($content->data(), Core::JSON));
                                 if(str_contains($file->target, 'System.Route')){
-                                    ddd('import the audio');
+                                    $command = 'app raxon/node object import -class=System.Route -url="' . $file->target . '" -patch';
+                                    Core::execute($object, $command, $output, $notification);
+                                    if($output){
+                                        echo $output;
+                                    }
+                                    if($notification){
+                                        echo $notification;
+                                    }
                                 }
                             break;
                             default:
