@@ -175,13 +175,21 @@ trait Main {
                         $parse = new Parse($clone, $data);
                         echo Cli::info('Processing file: ') . $file->url . PHP_EOL;
                         $file->original_extension = File::extension($file->target);
-                        d($file->original_extension);
-                        continue;
-                        $content = $parse->compile(File::read($file->url), $data);
-                        if($patch !== null) {
-                            File::delete($file->target);
+                        switch($file->original_extension){
+                            case 'json':
+                                $clone->data($data);
+                                $content = $clone->parse_read($file->url);
+                                if($patch !== null) {
+                                    File::delete($file->target);
+                                }
+                                File::write($file->target, Core::object($content, Core::JSON));
+                            default:
+                                $content = $parse->compile(File::read($file->url), $data);
+                                if($patch !== null) {
+                                    File::delete($file->target);
+                                }
+                                File::write($file->target, $content);
                         }
-                        File::write($file->target, $content);
                     } else {
                         if($patch !== null) {
                             File::delete($file->target);
