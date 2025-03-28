@@ -181,7 +181,8 @@ trait Main {
                                 if($patch !== null) {
                                     File::delete($file->target);
                                 }
-                                echo Cli::info('Processing file 2: ') . $file->target . PHP_EOL;
+                                echo Cli::info('Processing file: ') . $file->target . PHP_EOL;
+                                d($content);
                                 File::write($file->target, Core::object($content, Core::JSON));
                             break;
                             default:
