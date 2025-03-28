@@ -204,6 +204,7 @@ trait Main {
                                 }
                                 echo Cli::info('Processing file:') . $file->target . PHP_EOL;
                                 File::write($file->target, $content);
+                                trace();
                             break;
                         }
                     } else {
