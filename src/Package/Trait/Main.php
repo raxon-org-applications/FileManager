@@ -147,9 +147,9 @@ trait Main {
             }
         }
         $patch = $options->patch ?? null;
-        ddd($read);
         foreach($read as $nr => $file){
             if($file->type === File::TYPE){
+                echo Cli::warning('original:') . $file->url . PHP_EOL;
                 if(!File::exist($file->target) || $patch !== null){
                     $file->extension = File::extension($file->target);
                     if($file->extension === 'rax'){
@@ -175,7 +175,6 @@ trait Main {
                         $clone->data(App::OPTIONS, $clone_options->data());
                         $parse = new Parse($clone, $data);
                         $file->original_extension = File::extension($file->target);
-                        echo Cli::warning('original:') . $file->original_extension . PHP_EOL;
                         switch($file->original_extension){
                             case 'json':
                                 $clone->data($data);
