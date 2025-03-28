@@ -183,7 +183,7 @@ trait Main {
                                 }
                                 echo Cli::info('Processing file 2: ') . $file->target . PHP_EOL;
                                 File::write($file->target, Core::object($content, Core::JSON));
-                                break;
+                            break;
                             default:
                                 $content = $parse->compile(File::read($file->url), $data);
                                 if($patch !== null) {
@@ -191,6 +191,7 @@ trait Main {
                                 }
                                 echo Cli::info('Processing file: ') . $file->target . PHP_EOL;
                                 File::write($file->target, $content);
+                            break;
                         }
                     } else {
                         if($patch !== null) {
