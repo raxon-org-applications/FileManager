@@ -32,7 +32,6 @@ trait Main {
     public function install($options=[]): void
     {
         echo 'here';
-        die;
         $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if($object->config(Config::POSIX_ID) !== 0){
