@@ -182,8 +182,7 @@ trait Main {
                                     File::delete($file->target);
                                 }
                                 echo Cli::info('Processing file: ') . $file->target . PHP_EOL;
-                                d($content);
-                                File::write($file->target, Core::object($content, Core::JSON));
+                                File::write($file->target, Core::object($content->data(), Core::JSON));
                             break;
                             default:
                                 $content = $parse->compile(File::read($file->url), $data);
