@@ -179,7 +179,7 @@ trait Main {
                                 $clone->data($data);
                                 $content = $clone->parse_read($file->url);
                                 if($patch !== null) {
-                                    echo Cli::alert('Deleting file:') . $file->target . PHP_EOL;
+                                    echo Cli::error('Deleting file:') . $file->target . PHP_EOL;
                                     File::delete($file->target);
                                 }
                                 echo Cli::info('Processing file:') . $file->target . PHP_EOL;
@@ -199,7 +199,7 @@ trait Main {
                             default:
                                 $content = $parse->compile(File::read($file->url), $data);
                                 if($patch !== null) {
-                                    echo Cli::alert('Deleting file:') . $file->target . PHP_EOL;
+                                    echo Cli::error('Deleting file:') . $file->target . PHP_EOL;
                                     File::delete($file->target);
                                 }
                                 echo Cli::info('Processing file:') . $file->target . PHP_EOL;
@@ -208,7 +208,7 @@ trait Main {
                         }
                     } else {
                         if($patch !== null) {
-                            echo Cli::alert('Deleting file:') . $file->target . PHP_EOL;
+                            echo Cli::error('Deleting file:') . $file->target . PHP_EOL;
                             File::delete($file->target);
                         }
                         echo Cli::debug('Copying file:') . $file->target . PHP_EOL;
