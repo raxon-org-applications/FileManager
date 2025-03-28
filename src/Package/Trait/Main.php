@@ -173,7 +173,6 @@ trait Main {
                         $clone = clone $object;
                         $clone->data(App::OPTIONS, $clone_options->data());
                         $parse = new Parse($clone, $data);
-                        echo Cli::info('Processing file: ') . $file->url . PHP_EOL;
                         $file->original_extension = File::extension($file->target);
                         switch($file->original_extension){
                             case 'json':
@@ -182,12 +181,14 @@ trait Main {
                                 if($patch !== null) {
                                     File::delete($file->target);
                                 }
+                                echo Cli::info('Processing file: ') . $file->target . PHP_EOL;
                                 File::write($file->target, Core::object($content, Core::JSON));
                             default:
                                 $content = $parse->compile(File::read($file->url), $data);
                                 if($patch !== null) {
                                     File::delete($file->target);
                                 }
+                                echo Cli::info('Processing file: ') . $file->target . PHP_EOL;
                                 File::write($file->target, $content);
                         }
                     } else {
