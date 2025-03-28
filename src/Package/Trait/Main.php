@@ -183,6 +183,9 @@ trait Main {
                                 }
                                 echo Cli::info('Processing file: ') . $file->target . PHP_EOL;
                                 File::write($file->target, Core::object($content->data(), Core::JSON));
+                                if(str_contains($file->target, 'System.Route')){
+                                    ddd('import the audio');
+                                }
                             break;
                             default:
                                 $content = $parse->compile(File::read($file->url), $data);
