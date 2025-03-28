@@ -55,7 +55,7 @@ directory.open();
 {{else}}
     {{$tree.default_url = '/'}}
     {{$request.method = 'replace'}}
-    {{$request.target = target.create('section', ['id' => $id])}}
+    {{$request.target = html.target.create('section', ['id' => $id])}}
     {{$request.target += ' .tree'}}
     <ul class="{{config('controller.name')}}-manager-tree tree">
         {{$indent = 0}}

@@ -1,6 +1,6 @@
 {{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
 {{$request.method = 'replace'}}
-{{$request.target = target.create('section', ['id' => $id])}}
+{{$request.target = html.target.create('section', ['id' => $id])}}
 {{$request.target += ' .address-bar'}}
 {{block.html()}}
 <div class="left">
