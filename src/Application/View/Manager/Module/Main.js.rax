@@ -23,7 +23,7 @@ function(){
 user.refreshUrl("{{literal}}{{server.url({{/literal}}{{$options.backend.host}}{{literal}})}}{{/literal}}User/Refresh/Token/");
 user.loginUrl("{{literal}}{{route.get('user-login')}}{{/literal}}");
 language("{{literal}}{{language()}}{{/literal}}");
-translation.import("{{literal}}{{raw|export.translation('json-line')}}{{/literal}}");
+translation.import("{{literal}}{{raw|translation.export('json-line')}}{{/literal}}");
 let active = file.data.get('active') ?? [];
 active.push("{{literal}}{{$id}}{{/literal}}");
 file.data.set({
