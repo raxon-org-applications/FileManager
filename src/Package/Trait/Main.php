@@ -112,7 +112,6 @@ trait Main {
             $object->config('dictionary.application') .
             $object->config('ds')
         ;
-        ddd($dir_read);
         $dir_application = $object->config('project.dir.domain') .
             $response_frontend['node']->name .
             $object->config('ds') .
