@@ -174,6 +174,7 @@ trait Main {
                         $clone->data(App::OPTIONS, $clone_options->data());
                         $parse = new Parse($clone, $data);
                         $file->original_extension = File::extension($file->target);
+                        echo Cli::warning('original:') . $file->original_extension . PHP_EOL;
                         switch($file->original_extension){
                             case 'json':
                                 $clone->data($data);
