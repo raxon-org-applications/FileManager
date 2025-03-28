@@ -147,6 +147,7 @@ trait Main {
             }
         }
         $patch = $options->patch ?? null;
+        ddd($read);
         foreach($read as $nr => $file){
             if($file->type === File::TYPE){
                 if(!File::exist($file->target) || $patch !== null){
