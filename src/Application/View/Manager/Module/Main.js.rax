@@ -20,7 +20,7 @@ root() + 'Js/Dropzone/5.9.2/min/dropzone.min.css?' + version(),
 root() + 'Js/Dropzone/5.9.2/min/dropzone.min.js?' + version()
 ],
 function(){
-user.refreshUrl("{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}User/Refresh/Token/");
+user.refreshUrl("{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}User/Refresh/Token/");
 user.loginUrl("{{literal}}{{route.get('user-login')}}{{/literal}}");
 language("{{literal}}{{language()}}{{/literal}}");
 translation.import("{{literal}}{{raw|translation.export('json-line')}}{{/literal}}");
@@ -30,12 +30,12 @@ file.data.set({
 "controller" : "{{literal}}{{raw|object(config('controller'), 'json-line')}}{{/literal}}",
 "section.id" : "{{literal}}{{$id}}{{/literal}}",
 "active": active,
-"route.backend.directory" : "{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}FileSystem/List/Directory/",
-"route.backend.file": "{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}FileSystem/List/File/",
-"route.backend.extension": "{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}Entity/Extension/",
-"route.backend.tree": "{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}FileSystem/List/Tree/",
-"route.backend.upload": "{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}FileSystem/Upload/",
-"route.backend.context.menu": "{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}FileSystem/ContextMenu/",
+"route.backend.directory" : "{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}FileSystem/List/Directory/",
+"route.backend.file": "{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}FileSystem/List/File/",
+"route.backend.extension": "{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}Entity/Extension/",
+"route.backend.tree": "{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}FileSystem/List/Tree/",
+"route.backend.upload": "{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}FileSystem/Upload/",
+"route.backend.context.menu": "{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}FileSystem/ContextMenu/",
 "route.frontend.address.bar":"{{literal}}{{route.get($section.name + '-address-bar')}}{{/literal}}",
 "route.frontend.directory":"{{literal}}{{route.get($section.name + '-list-directory')}}{{/literal}}",
 "route.frontend.file": "{{literal}}{{route.get($section.name + '-list-file')}}{{/literal}}",
@@ -47,10 +47,10 @@ task.active({
     "id": "{{literal}}{{$id}}{{/literal}}",
     "namespace": "{{literal}}{{$section.name}}{{/literal}}",
     "config": {
-        "url": "{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}Application/Config/FileManager/"
+        "url": "{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}Application/Config/FileManager/"
     },
     "sse" : {
-        "url": "{{literal}}{{server.url("{{/literal}}{{$options.backend.host}}{{literal}}")}}{{/literal}}Task/?user.key=" + user.get('key') + '&channel=' + "{{literal}}{{$id}}{{/literal}}",
+        "url": "{{literal}}{{server.url(\"{{/literal}}{{$options.backend.host}}{{literal}}\")}}{{/literal}}Task/?user.key=" + user.get('key') + '&channel=' + "{{literal}}{{$id}}{{/literal}}",
 
     }
 }, (config) => {
