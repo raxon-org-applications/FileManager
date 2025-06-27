@@ -481,11 +481,8 @@ file.list = (config, response) => {
             li.addClass('type');
             if(node.type.toLowerCase() === 'dir'){
                 li.html(__('file.manager.dir'));
-            }
-            else if(node.extension) {
-                li.html(node.extension);
             } else {
-                li.html('&bsp;');
+                li.html(node.extension);
             }
             li.on('click', (event) => {
                 file.open(event);
@@ -539,10 +536,8 @@ file.list = (config, response) => {
             li.addClass('type');
             if(node.type.toLowerCase() === 'dir'){
                 li.html(__('file.manager.dir'));
-            } else if(node.extension) {
-                li.html(node.extension);
             } else {
-                li.html('&nbsp;');
+                li.html(node.extension);
             }
             li.on('click', (event) => {
                 file.open(event);
@@ -852,13 +847,13 @@ file.open_file_with = (element) => {
         frontend : file.data.get('route.frontend.application')
     };
     let node = {
-        "filter[name]" : element.data('extension'),
+        "name" : element.data('extension'),
         "request" : {
             "method" : "GET"
         }
     };
-    if(!node["filter[name]"]){
-        node["filter[name]"] = 'txt';
+    if(!node?.name){
+        node.name = 'txt';
     }
     const token = user.token();
     header("Authorization", 'Bearer ' + token);

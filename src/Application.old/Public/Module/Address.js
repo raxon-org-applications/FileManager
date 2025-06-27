@@ -1,7 +1,7 @@
-import { directory } from "/Application/Filemanager/Module/Directory.js";
-import { microphone } from "/Application/Filemanager/Module/Microphone.js";
+import { directory } from "/Application/FileManager/Module/Directory.js";
+import { microphone } from "/Application/FileManager/Module/Microphone.js";
 import { exception } from "/Module/Exception.js";
-import { file } from "/Application/Filemanager/Module/File.js";
+import { file } from "/Application/FileManager/Module/File.js";
 import { getSection } from "/Module/Section.js";
 import { taskbar } from "/Application/Desktop/Module/Taskbar.js";
 import user from "/Module/User.js";
@@ -228,7 +228,7 @@ address.search = () => {
             }
 
         // Transcribe an audio file, loaded from a URL.
-        //     let result = await transcriber('/Application/Filemanager/Module/Mp3/remco.01.mp3');
+        //     let result = await transcriber('/Application/FileManager/Module/Mp3/remco.01.mp3');
             // console.log(result);
 
             /*

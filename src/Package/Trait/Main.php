@@ -29,13 +29,15 @@ trait Main {
      * @throws DirectoryCreateException
      * @throws Exception
      */
-    public function install($options=[]): void
+    public function install($flags, $options): void
     {
-        $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if($object->config(Config::POSIX_ID) !== 0){
             return;
         }
+        ddd($options);
+
+
         $has_frontend = false;
         if(property_exists($options, 'frontend')){
             if(property_exists($options->frontend, 'host')){

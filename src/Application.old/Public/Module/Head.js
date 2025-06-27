@@ -1,5 +1,5 @@
 //import { create } from "/Module/Create/Js/Create.js";
-import { file } from "/Application/Filemanager/Module/File.js";
+import { file } from "/Application/FileManager/Module/File.js";
 import { getSection } from "/Module/Section.js";
 // import {editor} from "../../../Ace/Public/Module/Editor";
 import { taskbar } from "/Application/Desktop/Module/Taskbar.js";

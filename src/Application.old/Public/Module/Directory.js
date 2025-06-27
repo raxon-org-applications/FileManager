@@ -1,4 +1,4 @@
-import { file } from "/Application/Filemanager/Module/File.js";
+import { file } from "/Application/FileManager/Module/File.js";
 import { getSectionById } from "/Module/Section.js";
 import user from "/Module/User.js";
 import { exception } from "/Module/Exception.js";

@@ -1,0 +1,52 @@
+{
+    "admin-workandtravel-world-application-file-manager": {
+        "path": "\/Application\/FileManager\/",
+        "host": [
+            "admin.workandtravel.world"
+        ],
+        "controller": "Domain.Admin_Workandtravel_World.Application.FileManager.Controller.Manager.main",
+        "method": [
+            "GET",
+            "POST"
+        ]
+    },
+    "admin-workandtravel-world-application-file-manager-icon": {
+        "host": [
+            "admin.workandtravel.world"
+        ],
+        "url": "\/Application\/FileManager\/Icon\/Icon.png"
+    },
+    "admin-workandtravel-world-application-file-manager-address-bar": {
+        "path": "\/Application\/FileManager\/AddressBar\/",
+        "host": [
+            "admin.workandtravel.world"
+        ],
+        "controller": "Domain.Admin_Workandtravel_World.Application.FileManager.Controller.Manager.address_bar",
+        "method": [
+            "GET",
+            "POST"
+        ]
+    },
+    "admin-workandtravel-world-application-file-manager-list-directory": {
+        "path": "\/Application\/FileManager\/List\/Directory\/",
+        "host": [
+            "admin.workandtravel.world"
+        ],
+        "controller": "Domain.Admin_Workandtravel_World.Application.FileManager.Controller.Manager.list_directory",
+        "method": [
+            "GET",
+            "POST"
+        ]
+    },
+    "admin-workandtravel-world-application-file-manager-list-file": {
+        "path": "\/Application\/FileManager\/List\/File\/",
+        "host": [
+            "admin.workandtravel.world"
+        ],
+        "controller": "Domain.Admin_Workandtravel_World.Application.FileManager.Controller.Manager.list_file",
+        "method": [
+            "GET",
+            "POST"
+        ]
+    }
+}

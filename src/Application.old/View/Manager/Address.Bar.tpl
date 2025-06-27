@@ -1,4 +1,3 @@
-{{RAX}}
 {{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
 {{$request.method = 'replace'}}
 {{$request.target = html.target.create('section', ['id' => $id])}}
@@ -12,4 +11,4 @@
     <input type="search" name="search" value="" placeholder="{{__('file.manager.search')}}" />
     <button class="microphone">mic</button>
 </div>
-{{/block}}
+{{/block.html}
