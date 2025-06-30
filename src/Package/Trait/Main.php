@@ -164,6 +164,7 @@ trait Main {
                                     }
                                 break;
                                 default:
+                                    $clone_options->source = $file->url;
                                     $flags = App::flags($clone);
                                     $parse = new Parse($clone, $data, $flags, $clone_options);
                                     $content = $parse->compile(File::read($file->url), $data);
