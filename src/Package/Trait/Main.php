@@ -121,6 +121,13 @@ trait Main {
         $patch = $options->patch ?? null;
         foreach($read as $nr => $file){
             if($file->type === File::TYPE){
+                $file->extension = File::extension($file->target);
+                if($file->extension === 'rax'){
+                    $explode = explode('.rax', $file->target, 2);
+                    if(array_key_exists(1, $explode)){
+                        $file->target = $explode[0];
+                    }
+                }
                 ddd($file);
 
 
