@@ -139,7 +139,7 @@ trait Main {
                             } else {
                                 $clone_options->set('backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                             }
-                            $data = $object->data();
+                            $data = new Data($object->data());
                             $clone = clone $object;
                             $clone->data(App::OPTIONS, $clone_options->data());                                                        
                             switch($file->original_extension){
