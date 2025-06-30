@@ -5,7 +5,7 @@
                 "name": "application-file-manager",
                 "path": "\/Application\/Filemanager\/",
                 "host": "{{options('frontend.host')}}",
-                "controller": "Domain:{{app.controller.host($this)}}:Application:Filemanager:Controller:Manager:main",
+                "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:main",
                 "priority": 3001,
                 "method": [
                     "GET",
@@ -16,7 +16,7 @@
                 "name": "application-file-manager-address-bar",
                 "path": "\/Application\/Filemanager\/AddressBar\/",
                 "host": "{{options('frontend.host')}}",
-                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:address.bar",
+                "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:address.bar",
                 "priority": 3002,
                 "method": [
                     "GET",
@@ -27,7 +27,7 @@
                 "name": "application-file-manager-list-directory",
                 "path": "\/Application\/Filemanager\/List\/Directory\/",
                 "host": "{{options('frontend.host')}}",
-                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:list.directory",
+                "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:list.directory",
                 "priority": 3003,
                 "method": [
                     "GET",
@@ -38,7 +38,7 @@
                 "name": "application-file-manager-list-file",
                 "path": "\/Application\/Filemanager\/List\/File\/",
                 "host": "{{options('frontend.host')}}",
-                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:list.file",
+                "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:list.file",
                 "priority": 3004,
                 "method": [
                     "GET",
@@ -49,7 +49,7 @@
                 "name": "application-file-manager-file-open",
                 "path": "\/Application\/Filemanager\/File\/Open\/",
                 "host": "{{options('frontend.host')}}",
-                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:file.open",
+                "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:file.open",
                 "priority": 3005,
                 "method": [
                     "GET",
