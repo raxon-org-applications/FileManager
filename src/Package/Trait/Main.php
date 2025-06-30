@@ -106,6 +106,11 @@ trait Main {
         $node = new Node($object);
         $response_frontend = $node->record($class, $node->role_system(), $frontend_options);
         $response_backend = $node->record($class, $node->role_system(), $backend_options);
+
+        d($response_frontend);
+        ddd($response_backend);
+
+
         $dir_read = $object->config('project.dir.vendor') .
             $object->request('package') .
             $object->config('ds') .
