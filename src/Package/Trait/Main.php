@@ -144,12 +144,12 @@ trait Main {
                             $clone->data(App::OPTIONS, $clone_options->data());                                                        
                             switch($file->original_extension){
                                 case 'json':                                    
+                                    echo Cli::info('Processing file:') . $file->target . PHP_EOL;
                                     $content = $clone->parse_read($file->url);
                                     ddd($content);
                                     if($patch !== null) {
                                         File::delete($file->target);
-                                    }
-                                    echo Cli::info('Processing file:') . $file->target . PHP_EOL;
+                                    }                                    
                                     File::write($file->target, Core::object($content->data(), Core::JSON));
                                     File::permission($object, [
                                         'target' => $file->target,
@@ -167,14 +167,14 @@ trait Main {
                                     }
                                 break;
                                 default:
+                                    echo Cli::info('Processing file:') . $file->target . PHP_EOL;
                                     $clone_options->set('source', $file->url);
                                     $flags = App::flags($clone);
                                     $parse = new Parse($clone, $data, $flags, $clone_options->data());
                                     $content = $parse->compile(File::read($file->url), $data);                                    
                                     if($patch !== null) {
                                         File::delete($file->target);
-                                    }
-                                    echo Cli::info('Processing file:') . $file->target . PHP_EOL;
+                                    }                                    
                                     File::write($file->target, $content);
                                     File::permission($object, [
                                         'target' => $file->target,
