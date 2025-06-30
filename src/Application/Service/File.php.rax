@@ -1,13 +1,14 @@
+{{$frontend.host = options('frontend.host')}}
 <?php
 
-namespace Domain\Admin_Workandtravel_World\Application\Filemanager\Service;
+namespace Domain\{{php.namespace.host($frontend.host)}}\Application\Filemanager\Service;
 
 use Raxon\App;
 
 class File
 {
 
-    public static function manager_tree_directory(App $object, $options = ''): string
+    public static function manager_tree_directory(App $object, array $options): string
     {
         switch ($options['type']) {
             case 'has_sub_dir' :

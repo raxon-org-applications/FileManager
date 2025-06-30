@@ -4,8 +4,8 @@
             {
                 "name": "application-file-manager",
                 "path": "\/Application\/Filemanager\/",
-                "host": "admin.workandtravel.world",
-                "controller": "Domain:Admin.Workandtravel.World:Application:Filemanager:Controller:Manager:main",
+                "host": "{{options('frontend.host')}}",
+                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:main",
                 "priority": 3001,
                 "method": [
                     "GET",
@@ -15,8 +15,8 @@
             {
                 "name": "application-file-manager-address-bar",
                 "path": "\/Application\/Filemanager\/AddressBar\/",
-                "host": "admin.workandtravel.world",
-                "controller": "Domain:Admin.Workandtravel.World:Application:Filemanager:Controller:Manager:address.bar",
+                "host": "{{options('frontend.host')}}",
+                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:address.bar",
                 "priority": 3002,
                 "method": [
                     "GET",
@@ -26,8 +26,8 @@
             {
                 "name": "application-file-manager-list-directory",
                 "path": "\/Application\/Filemanager\/List\/Directory\/",
-                "host": "admin.workandtravel.world",
-                "controller": "Domain:Admin.Workandtravel.World:Application:Filemanager:Controller:Manager:list.directory",
+                "host": "{{options('frontend.host')}}",
+                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:list.directory",
                 "priority": 3003,
                 "method": [
                     "GET",
@@ -37,8 +37,8 @@
             {
                 "name": "application-file-manager-list-file",
                 "path": "\/Application\/Filemanager\/List\/File\/",
-                "host": "admin.workandtravel.world",
-                "controller": "Domain:Admin.Workandtravel.World:Application:Filemanager:Controller:Manager:list.file",
+                "host": "{{options('frontend.host')}}",
+                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:list.file",
                 "priority": 3004,
                 "method": [
                     "GET",
@@ -48,8 +48,8 @@
             {
                 "name": "application-file-manager-file-open",
                 "path": "\/Application\/Filemanager\/File\/Open\/",
-                "host": "admin.workandtravel.world",
-                "controller": "Domain:Admin.Workandtravel.World:Application:Filemanager:Controller:Manager:file.open",
+                "host": "{{options('frontend.host')}}",
+                "controller": "Domain:{{app.controller.host($this.host)}}:Application:Filemanager:Controller:Manager:file.open",
                 "priority": 3005,
                 "method": [
                     "GET",
@@ -59,7 +59,7 @@
             {
                 "name": "application-file-manager-icon",
                 "url": "\/Application\/Filemanager\/Icon\/Icon.png",
-                "host": "admin.workandtravel.world",
+                "host": "{{options('frontend.host')}}",
                 "priority": 3006
             }
         ]

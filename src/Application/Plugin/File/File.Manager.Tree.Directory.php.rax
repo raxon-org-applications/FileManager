@@ -1,3 +1,4 @@
+{{$frontend.host = options('frontend.host')}}
 <?php
 /**
  * @package Plugin\Modifier
@@ -10,11 +11,11 @@
  */
 namespace Plugin;
 
-use Domain\Admin_Workandtravel_World\Application\Filemanager\Service\File;
+use Domain\{{php.namespace.host($frontend.host)}}\Application\Filemanager\Service\File;
 
 trait File_Manager_Tree_Directory {
 
-    protected function file_manager_tree_directory($node='', $li='', $type=''): string
+    protected function file_manager_tree_directory(object $node, object $li, string $type): string
     {
         $options = [];
         $options['node'] = $node;

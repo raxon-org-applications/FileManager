@@ -1,11 +1,10 @@
+{{$options = options()}}
 <?php
-namespace Domain\Admin_Workandtravel_World\Application\Filemanager\Controller;
+namespace Domain\{{php.namespace.host($options.frontend.host)}}\Application\Filemanager\Controller;
 
 use Raxon\App;
 use Raxon\Module\Server;
 use Raxon\Module\Controller;
-
-use Package\Raxon\Account\Service\Jwt;
 
 use Raxon\Exception\LocateException;
 use Raxon\Exception\UrlEmptyException;
@@ -26,18 +25,6 @@ class Manager extends Controller {
     public static function main(App $object){
         $name = Manager::name(__FUNCTION__ , __CLASS__, '/');
         $url = Manager::locate($object, $name);
-        /* unsafe code below, frontend should not do backend tasks
-        $token = Server::token();
-        $token_unencrypted = Jwt::decryptToken($object, $token);
-        $claims = $token_unencrypted->claims();
-        if($claims->has('user')) {
-            $user = $claims->get('user');
-            if(array_key_exists('uuid', $user)){
-                ddd($user['uuid']);
-            }
-        }
-        */
-
         return Manager::response($object, $url);
     }
 
