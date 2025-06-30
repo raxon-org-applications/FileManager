@@ -16,7 +16,7 @@ use Raxon\Module\Event;
 use Raxon\Module\File;
 use Raxon\Module\Host;
 use Raxon\Module\Sort;
-use Raxon\Module\Parse;
+use Raxon\Parse\Module\Parse;
 
 use Raxon\Node\Module\Node;
 
@@ -126,8 +126,59 @@ trait Main {
                     $explode = explode('.rax', $file->target, 2);
                     if(array_key_exists(1, $explode)){
                         $file->target = $explode[0];
+                        $file->original_extension = File::extension($file->target);
+                        if(!File::exist($file->target) || $patch !== null){
+                            $clone_options = new Data();
+                            if(!property_exists($response_frontend['node'],'subdomain')){
+                                $clone_options->set('frontend.host', $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
+                            } else {
+                                $clone_options->set('frontend.host', $response_frontend['node']->subdomain . '.' . $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
+                            }
+                            if(!property_exists($response_backend['node'],'subdomain')){
+                                $clone_options->set('backend.host', $response_backend['node']->domain . '.' . $response_backend['node']->extension);
+                            } else {
+                                $clone_options->set('backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
+                            }
+                            $data = $object->data();
+                            $clone = clone $object;
+                            $clone->data(App::OPTIONS, $clone_options->data());                                                        
+                            switch($file->original_extension){
+                                case 'json':                                    
+                                    $content = $clone->parse_read($file->url);
+                                    ddd($content);
+                                    if($patch !== null) {
+                                        File::delete($file->target);
+                                    }
+                                    echo Cli::info('Processing file:') . $file->target . PHP_EOL;
+                                    File::write($file->target, Core::object($content->data(), Core::JSON));
+                                    //imports should be in a json file (class => url/contains)
+                                    if(str_contains($file->target, 'System.Route')){
+                                        $command = 'app raxon/node object import -class=System.Route -url="' . $file->target . '" -patch';
+                                        Core::execute($object, $command, $output, $notification);
+                                        if($output){
+                                            echo $output;
+                                        }
+                                        if($notification){
+                                            echo $notification;
+                                        }
+                                    }
+                                break;
+                                default:
+                                    $flags = App::flags($clone);
+                                    $parse = new Parse($clone, $data, $flags, $clone_options);
+                                    $content = $parse->compile(File::read($file->url), $data);
+                                    ddd($content);
+                                    if($patch !== null) {
+                                        File::delete($file->target);
+                                    }
+                                    echo Cli::info('Processing file:') . $file->target . PHP_EOL;
+                                    File::write($file->target, $content);
+                                break;
+                            }
+                        }                
                     }
                 }
+                
                 ddd($file);
 
 
@@ -140,9 +191,7 @@ trait Main {
                         if(array_key_exists(1, $explode)){
                             $file->target = $explode[0];
                         }
-                        $data = (object) [
-                            'source' => $file->url, //used in TemplateExceptions
-                        ];
+                        $data = $object->data();
                         $clone_options = new Data();
                         if(!property_exists($response_frontend['node'],'subdomain')){
                             $clone_options->set('frontend.host', $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
@@ -153,10 +202,9 @@ trait Main {
                             $clone_options->set('backend.host', $response_backend['node']->domain . '.' . $response_backend['node']->extension);
                         } else {
                             $clone_options->set('backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
-                        }
-                        $clone = clone $object;
-                        $clone->data(App::OPTIONS, $clone_options->data());
-                        $parse = new Parse($clone, $data);
+                        }                       
+                        $flags =                          
+                        $parse = new Parse($object, $data);
                         $file->original_extension = File::extension($file->target);
                         switch($file->original_extension){
                             case 'json':
