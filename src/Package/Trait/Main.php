@@ -105,7 +105,7 @@ trait Main {
         $response_backend = $node->record($class, $node->role_system(), $backend_options);
 
         d($response_frontend);
-        dd  d($response_backend);
+        ddd($response_backend);
 
 
         $dir_read = $object->config('project.dir.vendor') .
