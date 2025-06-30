@@ -35,9 +35,6 @@ trait Main {
         if($object->config(Config::POSIX_ID) !== 0){
             return;
         }
-        ddd($options);
-
-
         $has_frontend = false;
         if(property_exists($options, 'frontend')){
             if(property_exists($options->frontend, 'host')){
@@ -108,7 +105,7 @@ trait Main {
         $response_backend = $node->record($class, $node->role_system(), $backend_options);
 
         d($response_frontend);
-        ddd($response_backend);
+        dd  d($response_backend);
 
 
         $dir_read = $object->config('project.dir.vendor') .
