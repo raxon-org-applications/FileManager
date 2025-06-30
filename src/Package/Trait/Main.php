@@ -44,7 +44,7 @@ trait Main {
                         [
                             'value' => $options->frontend->host,
                             'attribute' => 'name',
-                            'operator' => '===',
+                            'operator' => 'partial',
                         ]
                     ]
                 ];
@@ -59,7 +59,7 @@ trait Main {
                         [
                             'value' => $options->backend->host,
                             'attribute' => 'name',
-                            'operator' => '===',
+                            'operator' => 'partial',
                         ]
                     ]
                 ];                
