@@ -95,7 +95,7 @@ trait Main {
         ;
         d($dir_read);
         d($dir_target);
-        ddd($dir_application)        
+        ddd($dir_application);
         if(!File::exist($dir_target)){
             Dir::create($dir_target, Dir::CHMOD);
             File::permission($object, [
