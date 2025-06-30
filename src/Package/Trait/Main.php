@@ -66,20 +66,15 @@ trait Main {
             }
         }
         if($has_frontend === false){
-            throw new Exception('Frontend.host option is required (frontend.host, aborting...');
+            throw new Exception('Frontend.host option is required and must be defined in Node/System.Host.json aborting...');
         }
         if($has_backend === false){
-            throw new Exception('Backend.host option is required (backend.host, aborting...');
+            throw new Exception('Backend.host option is required and must be defined in Node/System.Host.json aborting...');
         }
         $class = 'System.Host';
         $node = new Node($object);
         $response_frontend = $node->record($class, $node->role_system(), $frontend_options);
         $response_backend = $node->record($class, $node->role_system(), $backend_options);
-
-        d($response_frontend);
-        ddd($response_backend);
-
-
         $dir_read = $object->config('project.dir.vendor') .
             $object->request('package') .
             $object->config('ds') .
@@ -98,6 +93,9 @@ trait Main {
             'Filemanager' .
             $object->config('ds')
         ;
+        d($dir_read);
+        d($dir_target);
+        ddd($dir_application)        
         if(!File::exist($dir_target)){
             Dir::create($dir_target, Dir::CHMOD);
             File::permission($object, [
