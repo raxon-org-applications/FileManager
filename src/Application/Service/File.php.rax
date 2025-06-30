@@ -1,7 +1,8 @@
 {{$frontend.host = options('frontend.host')}}
+{{literal}}
 <?php
 
-namespace Domain\{{php.namespace.host($frontend.host)}}\Application\Filemanager\Service;
+namespace Domain\{{/literal}}{{php.namespace.host($frontend.host)}}{{literal}}\Application\Filemanager\Service;
 
 use Raxon\App;
 
@@ -32,3 +33,4 @@ class File
         }
     }
 }
+{{/literal}}

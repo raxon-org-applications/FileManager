@@ -1,6 +1,7 @@
 {{$options = options()}}
+{{literal}}
 <?php
-namespace Domain\{{php.namespace.host($options.frontend.host)}}\Application\Filemanager\Controller;
+namespace Domain\{{/literal}}{{php.namespace.host($options.frontend.host)}}{{literal}}\Application\Filemanager\Controller;
 
 use Raxon\App;
 use Raxon\Module\Server;
@@ -68,3 +69,4 @@ class Manager extends Controller {
         return Manager::response($object, $url);
     }
 }
+{{/literal}}

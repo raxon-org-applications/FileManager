@@ -1,4 +1,5 @@
 {{$frontend.host = options('frontend.host')}}
+{{literal}}
 <?php
 /**
  * @package Plugin\Modifier
@@ -11,7 +12,7 @@
  */
 namespace Plugin;
 
-use Domain\{{php.namespace.host($frontend.host)}}\Application\Filemanager\Service\File;
+use Domain\{{/literal}}{{php.namespace.host($frontend.host)}}{{literal}}\Application\Filemanager\Service\File;
 
 trait File_Manager_Tree_Directory {
 
@@ -26,3 +27,4 @@ trait File_Manager_Tree_Directory {
     }
 
 }
+{{/literal}}
