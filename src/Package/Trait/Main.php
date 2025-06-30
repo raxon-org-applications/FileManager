@@ -37,67 +37,39 @@ trait Main {
         }
         $has_frontend = false;
         if(property_exists($options, 'frontend')){
-            if(property_exists($options->frontend, 'host')){
-                if(property_exists($options->frontend->host, 'name')){
-                    $has_frontend = true;
-                    $frontend_options = [
-                        'where' => [
-                            [
-                                'value' => $options->frontend->host->name,
-                                'attribute' => 'name',
-                                'operator' => '===',
-                            ]
+            if(property_exists($options->frontend, 'host')){                
+                $has_frontend = true;
+                $frontend_options = [
+                    'where' => [
+                        [
+                            'value' => $options->frontend->host,
+                            'attribute' => 'name',
+                            'operator' => '===',
                         ]
-                    ];
-                }
-                if(property_exists($options->frontend->host, 'uuid')){
-                    $has_frontend = true;
-                    $frontend_options = [
-                        'where' => [
-                            [
-                                'value' => $options->frontend->host->uuid,
-                                'attribute' => 'uuid',
-                                'operator' => '===',
-                            ]
-                        ]
-                    ];
-                }
-            }
-        }
+                    ]
+                ];
+            }                
+        }        
         $has_backend = false;
         if(property_exists($options, 'backend')){
-            if(property_exists($options->backend, 'host')){
-                if(property_exists($options->backend->host, 'name')){
-                    $has_backend = true;
-                    $backend_options = [
-                        'where' => [
-                            [
-                                'value' => $options->backend->host->name,
-                                'attribute' => 'name',
-                                'operator' => '===',
-                            ]
+            if(property_exists($options->backend, 'host')){                
+                $has_backend = true;
+                $backend_options = [
+                    'where' => [
+                        [
+                            'value' => $options->backend->host,
+                            'attribute' => 'name',
+                            'operator' => '===',
                         ]
-                    ];
-                }
-                if(property_exists($options->backend->host, 'uuid')){
-                    $has_backend = true;
-                    $backend_options = [
-                        'where' => [
-                            [
-                                'value' => $options->backend->host->uuid,
-                                'attribute' => 'uuid',
-                                'operator' => '===',
-                            ]
-                        ]
-                    ];
-                }
+                    ]
+                ];                
             }
         }
         if($has_frontend === false){
-            throw new Exception('Frontend.host option is required (frontend.host.name || frontend.host.uuid), aborting...');
+            throw new Exception('Frontend.host option is required (frontend.host, aborting...');
         }
         if($has_backend === false){
-            throw new Exception('Backend.host option is required (backend.host.name || backend.host.uuid), aborting...');
+            throw new Exception('Backend.host option is required (backend.host, aborting...');
         }
         $class = 'System.Host';
         $node = new Node($object);
