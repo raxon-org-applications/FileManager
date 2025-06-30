@@ -93,13 +93,11 @@ trait Main {
             'Filemanager' .
             $object->config('ds')
         ;
-        d($dir_read);
-        d($dir_target);
-        ddd($dir_application);
         if(!File::exist($dir_target)){
             Dir::create($dir_target, Dir::CHMOD);
             File::permission($object, [
                 'target' => $dir_target,
+                'application' => $dir_application,
             ]);
         }
         $dir = new Dir();
@@ -123,6 +121,11 @@ trait Main {
         $patch = $options->patch ?? null;
         foreach($read as $nr => $file){
             if($file->type === File::TYPE){
+                ddd($file);
+
+
+
+
                 if(!File::exist($file->target) || $patch !== null){
                     $file->extension = File::extension($file->target);
                     if($file->extension === 'rax'){
