@@ -1,5 +1,4 @@
-{{$frontend.host = options('frontend.host')}}
-{{literal}}
+{{$frontend.host = options('frontend.host')}}{{literal}}
 <?php
 /**
  * @package Plugin\Modifier
