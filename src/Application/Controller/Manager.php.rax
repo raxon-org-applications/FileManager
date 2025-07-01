@@ -1,5 +1,4 @@
-{{$options = options()}}{{literal}}
-<?php
+{{$options = options()}}{{literal}}<?php
 namespace Domain\{{/literal}}{{php.namespace.host($options.frontend.host)}}{{literal}}\Application\Filemanager\Controller;
 
 use Raxon\App;

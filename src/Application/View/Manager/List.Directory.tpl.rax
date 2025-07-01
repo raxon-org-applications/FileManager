@@ -1,5 +1,4 @@
-{{$backend.host = options('backend.host')}}{{literal}}
-{{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
+{{$backend.host = options('backend.host')}}{{literal}}{{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
 {{script('module')}}
 import { directory } from "/Application/Filemanager/Module/Directory.js";
 directory.open();

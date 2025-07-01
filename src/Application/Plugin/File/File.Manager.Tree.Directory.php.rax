@@ -1,5 +1,4 @@
-{{$frontend.host = options('frontend.host')}}{{literal}}
-<?php
+{{$frontend.host = options('frontend.host')}}{{literal}}<?php
 /**
  * @package Plugin\Modifier
  * @author Remco van der Velde

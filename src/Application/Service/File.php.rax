@@ -1,6 +1,4 @@
-{{$frontend.host = options('frontend.host')}}
-{{literal}}
-<?php
+{{$frontend.host = options('frontend.host')}}{{literal}}<?php
 
 namespace Domain\{{/literal}}{{php.namespace.host($frontend.host)}}{{literal}}\Application\Filemanager\Service;
 
