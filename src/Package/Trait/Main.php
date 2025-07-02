@@ -171,7 +171,10 @@ trait Main {
                                     $flags = App::flags($clone);
                                     $parse = new Parse($clone, $data, $flags, $clone_options->data());
                                     $read = File::read($file->url);                                    
-                                    $content = $parse->compile($read, $data);                                                                        
+                                    $content = $parse->compile($read, $data); 
+                                    if(str_contains($file->url, 'List.Directory')){
+                                        breakpoint($content);
+                                    }                                                                       
                                     if($patch !== null) {
                                         File::delete($file->target);
                                     }                                    
