@@ -172,6 +172,7 @@ trait Main {
                                     $parse = new Parse($clone, $data, $flags, $clone_options->data());
                                     $read = File::read($file->url);
                                     d($read);
+                                    d('content');
                                     $content = $parse->compile($read, $data);                                    
                                     breakpoint($content);
                                     if($patch !== null) {
