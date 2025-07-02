@@ -170,11 +170,8 @@ trait Main {
                                     $clone_options->set('source', $file->url);
                                     $flags = App::flags($clone);
                                     $parse = new Parse($clone, $data, $flags, $clone_options->data());
-                                    $read = File::read($file->url);
-                                    d($read);
-                                    d('content');
-                                    $content = $parse->compile($read, $data);                                    
-                                    breakpoint($content);
+                                    $read = File::read($file->url);                                    
+                                    $content = $parse->compile($read, $data);                                                                        
                                     if($patch !== null) {
                                         File::delete($file->target);
                                     }                                    
