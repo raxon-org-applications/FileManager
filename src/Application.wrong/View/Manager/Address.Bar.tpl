@@ -1,4 +1,3 @@
-{{RAX}}
 {{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
 {{$request.method = 'replace'}}
 {{$request.target = html.target.create('section', ['id' => $id])}}
