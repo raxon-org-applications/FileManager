@@ -1,4 +1,4 @@
-{{RAX}}
+{{$backend.host = options('backend.host')}}{{literal}}{{RAX}}
 {{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
 {{script('module')}}
 import { directory } from "/Application/Filemanager/Module/Directory.js";
@@ -99,3 +99,4 @@ directory.open();
         {{/if}}
     </ul>
 {{/if}}
+{{/literal}}
