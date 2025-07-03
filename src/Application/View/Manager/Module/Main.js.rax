@@ -1,4 +1,4 @@
-{{literal}}
+{{$backend.host = options('backend.host')}}{{literal}}
 //{{RAX}}
 import { address } from "/Application/Filemanager/Module/Address.js";
 import { directory } from "/Application/Filemanager/Module/Directory.js";
@@ -21,7 +21,7 @@ require(
         root() + 'Js/Dropzone/5.9.2/min/dropzone.min.js?' + version()
     ],
     function(){
-        user.refreshUrl("{{server.url('api.workandtravel.world')}}User/Refresh/Token/");
+        user.refreshUrl("{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}User/Refresh/Token/");
         user.loginUrl("{{route.get('user-login')}}");
         language("{{language()}}");
         translation.import("{{raw|translation.export('json-line')}}");
