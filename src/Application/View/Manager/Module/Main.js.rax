@@ -1,3 +1,4 @@
+{{literal}}
 //{{RAX}}
 import { address } from "/Application/Filemanager/Module/Address.js";
 import { directory } from "/Application/Filemanager/Module/Directory.js";
@@ -69,3 +70,4 @@ require(
 
 
     });
+{{/literal}}
