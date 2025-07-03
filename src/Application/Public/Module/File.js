@@ -510,7 +510,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node,
                     'section' : section,
-                    'tr' : this,
+                    'tr' : event.target.closest('li'),
                 });
             });
             li.data('file', node.url);
