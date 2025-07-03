@@ -1,6 +1,6 @@
 @font-face {
     font-family: raxon;
-    src: url("Application/Filemanager/Font/ZenDots-Regular/ZenDots-Regular.ttf");
+    src: url("/Application/Filemanager/Font/ZenDots-Regular/ZenDots-Regular.ttf");
 }
 
 section[name="application-file-manager"] .dialog {
