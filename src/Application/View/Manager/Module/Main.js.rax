@@ -31,12 +31,12 @@ require(
             "controller" : "{{raw|object(config('controller'), 'json-line')}}",
             "section.id" : "{{$id}}",
             "active": active,
-            "route.backend.directory" : "{{server.url('api.workandtravel.world')}}FileSystem/List/Directory/",
-            "route.backend.file": "{{server.url('api.workandtravel.world')}}FileSystem/List/File/",
-            "route.backend.extension": "{{server.url('api.workandtravel.world')}}Entity/Extension/",
-            "route.backend.tree": "{{server.url('api.workandtravel.world')}}FileSystem/List/Tree/",
-            "route.backend.upload": "{{server.url('api.workandtravel.world')}}FileSystem/Upload/",
-            "route.backend.context.menu": "{{server.url('api.workandtravel.world')}}FileSystem/ContextMenu/",
+            "route.backend.directory" : "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/List/Directory/",
+            "route.backend.file": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/List/File/",
+            "route.backend.extension": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}Entity/Extension/",
+            "route.backend.tree": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/List/Tree/",
+            "route.backend.upload": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Upload/",
+            "route.backend.context.menu": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/ContextMenu/",
             "route.frontend.address.bar":"{{route.get($section.name + '-address-bar')}}",
             "route.frontend.directory":"{{route.get($section.name + '-list-directory')}}",
             "route.frontend.file": "{{route.get($section.name + '-list-file')}}",
@@ -48,10 +48,10 @@ require(
             "id": "{{$id}}",
             "namespace": "{{$section.name}}",
             "config": {
-                "url": "{{server.url('api.workandtravel.world')}}Application/Config/Filemanager/"
+                "url": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}Application/Config/Filemanager/"
             },
             "sse" : {
-                "url": "{{server.url('api.workandtravel.world')}}Task/?user.key=" + user.get('key') + '&channel=' + "{{$id}}",
+                "url": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}Task/?user.key=" + user.get('key') + '&channel=' + "{{$id}}",
 
             }
         }, (config) => {
