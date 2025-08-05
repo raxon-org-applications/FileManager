@@ -2,7 +2,7 @@
 {{block.html()}}
 <section id="{{$id}}" name="{{$section.name}}" class="display-none">
     <div class="dialog dialog-{{config('controller.name')}}-main">
-        <div class="head" data-title="{{__('file.manager.title')}} | {{$request.file|default:''}}">
+        <div class="head" data-title="{{__('file.manager.title')}} | {{$request.file|>default:''}}">
             <h1><img src="{{route.get($section.name + '-icon')}}" class="icon" /> {{__('file.manager.title')}}</h1>
             <span class="close"><i class="fas fa-window-close"></i></span>
             <span class="minimize"><i class="far fa-window-minimize"></i></span>

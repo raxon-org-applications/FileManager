@@ -24,11 +24,11 @@ require(
         user.refreshUrl("{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}User/Refresh/Token/");
         user.loginUrl("{{route.get('user-login')}}");
         language("{{language()}}");
-        translation.import("{{raw|translation.export('json-line')}}");
+        translation.import("{{raw|>translation.export('json-line')}}");
         let active = file.data.get('active') ?? [];
         active.push("{{$id}}");
         file.data.set({
-            "controller" : "{{raw|object(config('controller'), 'json-line')}}",
+            "controller" : "{{raw|>object(config('controller'), 'json-line')}}",
             "section.id" : "{{$id}}",
             "active": active,
             "route.backend.directory" : "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/List/Directory/",
