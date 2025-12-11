@@ -181,6 +181,7 @@ file.context_menu = ({
             table_tr.appendChild(td);
             tbody.appendChild(table_tr);
             table_tr.on('click', (event) => {
+                console.log('name: ' + item.name);
                 switch(item.name){
                     case __('file.manager.contextmenu.open_with'): {
                         file.open_file_with(tr);
