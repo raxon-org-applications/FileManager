@@ -24,6 +24,8 @@
     "file.manager.loading" : "Loading",
     "file.manager.contextmenu.open_with" : "Open with",
     "file.manager.contextmenu.new": "New",
+    "file.manager.contextmenu.new_file": "New file",
+    "file.manager.contextmenu.new_directory": "New directory",
     "file.manager.contextmenu.cut": "Cut",
     "file.manager.contextmenu.copy": "Copy",
     "file.manager.contextmenu.paste": "Paste",
