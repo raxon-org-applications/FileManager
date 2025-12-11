@@ -349,6 +349,7 @@ file.context_menu_item = ({
     table_td.on('click', (event) => {
         file.data.delete('context.menu.item.active');
         create_div.remove();
+        td.html('&#10219;');
     });
     table_td.colSpan = 4;
     table_tr.appendChild(table_td);
@@ -358,8 +359,8 @@ file.context_menu_item = ({
         let index;
         for(index = 0; index < submenu.length; index++){
             let menu_item = submenu[index];
-            table_tr = create('tr');
-            table_td = create('td');
+            let table_tr_submenu = create('tr');
+            let table_td_submenu = create('td');
             let i = create('i');
             i.addClass(menu_item?.icon?.class);
             i.on('mouseover', (event) => {
@@ -374,30 +375,30 @@ file.context_menu_item = ({
                     keyboard_shortcut.removeClass('active');
                 }
             });
-            table_td.appendChild(i);
-            table_tr.appendChild(table_td);
-            table_td = create('td');
+            table_td_submenu.appendChild(i);
+            table_tr_submenu.appendChild(table_td_submenu);
+            table_td_submenu = create('td');
             let keyboard_shortcut = !is.empty(menu_item?.keyboard) ?  menu_item.keyboard : '&nbsp;';
-            table_td.html('<i class="keyboard-shortcut">' + keyboard_shortcut +'</i>');
-            table_tr.appendChild(table_td);
-            table_td = create('td');
-            table_tr.appendChild(table_td);
-            table_td.html(__(menu_item.name));
-            table_tr.appendChild(table_td);
-            table_td = create('td');
+            table_td_submenu.html('<i class="keyboard-shortcut">' + keyboard_shortcut +'</i>');
+            table_tr_submenu.appendChild(table_td_submenu);
+            table_td_submenu = create('td');
+            table_tr_submenu.appendChild(table_td_submenu);
+            table_td_submenu.html(__(menu_item.name));
+            table_tr_submenu.appendChild(table_td_submenu);
+            table_td_submenu = create('td');
             if(submenu?.submenu){
                 submenu = submenu?.submenu
                 console.log(submenu);
-                table_td.html('&#10219;');
-                table_td.on('click', (event) => {
+                table_td_submenu.html('&#10219;');
+                table_td_submenu.on('click', (event) => {
                     file.context_menu_item({event, submenu, section, tr, td});
                 });
             } else {
                 td.html('');
             }
-            table_tr.appendChild(table_td);
-            tbody.appendChild(table_tr);
-            table_tr.on('click', (event) => {
+            table_tr_submenu.appendChild(table_td_submenu);
+            tbody.appendChild(table_tr_submenu);
+            table_tr_submenu.on('click', (event) => {
                 switch(__(menu_item.name)){
                     case __('file.manager.contextmenu.open_with'): {
                         file.open_file_with(tr);
@@ -447,16 +448,15 @@ file.context_menu_item = ({
                         break;
                     }
                 }
-                file.open_file_with(tr);
             });
-            table_tr.on('mouseover', (event) => {
+            table_tr_submenu.on('mouseover', (event) => {
                 let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
                 console.log(keyboard_shortcut);
                 if(keyboard_shortcut){
                     keyboard_shortcut.addClass('active');
                 }
             });
-            table_tr.on('mouseout', (event) => {
+            table_tr_submenu.on('mouseout', (event) => {
                 let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
                 if(keyboard_shortcut){
                     keyboard_shortcut.removeClass('active');
