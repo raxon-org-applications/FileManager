@@ -171,15 +171,70 @@ file.context_menu = ({
             td.on('click', (event) => {
                 file.context_menu_item({event, submenu, section, tr, td});
             });
+            table_tr.appendChild(td);
+            tbody.appendChild(table_tr);
+            table_tr.on('click', (event) => {
+                file.context_menu_item({event, submenu, section, tr, td});
+            });
         } else {
             td.html('');
+            table_tr.appendChild(td);
+            tbody.appendChild(table_tr);
+            table_tr.on('click', (event) => {
+                switch(item.name){
+                    case __('file.manager.contextmenu.open_with'): {
+                        file.open_file_with(tr);
+                        break;
+                    }
+                    case __('file.manager.contextmenu.download'): {
+                        alert('download');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.new'): {
+                        alert('new');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.cut'): {
+                        alert('cut');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.copy'): {
+                        alert('copy');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.paste'): {
+                        alert('paste');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.rename'): {
+                        alert('rename');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.share'): {
+                        alert('share');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.delete'): {
+                        alert('delete');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.audio_options'): {
+                        alert('audio options');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.audio_options_song_play'): {
+                        alert('audio play');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.audio_options_song_queue'): {
+                        alert('audio queue');
+                        break;
+                    }
+
+                }
+
+            });
         }
-        table_tr.appendChild(td);
-        tbody.appendChild(table_tr);
-        console.log('name: ' + item.name);
-        table_tr.on('click', (event) => {
-            file.open_file_with(tr);
-        });
         table_tr.on('mouseover', (event) => {
             let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
             if(keyboard_shortcut){
