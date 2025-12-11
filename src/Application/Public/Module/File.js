@@ -195,6 +195,14 @@ file.context_menu = ({
                         alert('new');
                         break;
                     }
+                    case __('file.manager.contextmenu.new_file'): {
+                        alert('new');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.new_directory'): {
+                        alert('new');
+                        break;
+                    }
                     case __('file.manager.contextmenu.cut'): {
                         alert('cut');
                         break;
@@ -410,6 +418,14 @@ file.context_menu_item = ({
                     }
                     case __('file.manager.contextmenu.new'): {
                         alert('new');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.new_file'): {
+                        alert('new file');
+                        break;
+                    }
+                    case __('file.manager.contextmenu.new_directory'): {
+                        alert('new directory');
                         break;
                     }
                     case __('file.manager.contextmenu.cut'): {
