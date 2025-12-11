@@ -1009,12 +1009,27 @@ file.new_directory = (element) => {
         "directory" : element.data('directory'),
     }
     let div = create('div');
-
-
+    div.style.position = 'absolute';
+    div.style.top = '50%';
+    div.style.left = '50%';
+    div.style.transform = 'translate(-50%, -50%)';
+    div.style.zIndex = '1000';
+    div.style.backgroundColor = '#fff';
+    div.style.padding = '10px';
+    div.style.borderRadius = '5px';
+    div.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+    div.style.textAlign = 'center';
+    div.style.width = '300px';
+    div.style.height = '100px';
+    div.innerHTML = '<input type="text" name="name" placeholder="Name" />';
+    let body = element.closest('.body');
+    body.appendChild(div);
+    /*
     request(route.new.directory, node, (url, data) => {
 
 
     });
+     */
 }
 
 file.section_active = (id) => {
