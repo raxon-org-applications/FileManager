@@ -23,6 +23,13 @@
     "file.manager.PB" : "PB",
     "file.manager.loading" : "Loading",
     "file.manager.contextmenu.open_with" : "Open with",
+    "file.manager.contextmenu.new": "New",
+    "file.manager.contextmenu.cut": "Cut",
+    "file.manager.contextmenu.copy": "Copy",
+    "file.manager.contextmenu.paste": "Paste",
+    "file.manager.contextmenu.rename": "Rename",
+    "file.manager.contextmenu.share": "Share",
+    "file.manager.contextmenu.delete": "Delete",
     "file.manager.contextmenu.audio_options" : "Audio options",
     "file.manager.contextmenu.audio_options_song_play" : "Play song",
     "file.manager.contextmenu.audio_options_song_queue" : "Queue song(s)"
