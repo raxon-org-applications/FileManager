@@ -196,11 +196,11 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.new_file'): {
-                        alert('new');
+                        alert('new file');
                         break;
                     }
                     case __('file.manager.contextmenu.new_directory'): {
-                        alert('new');
+                        alert('new directory');
                         break;
                     }
                     case __('file.manager.contextmenu.cut'): {
@@ -422,10 +422,19 @@ file.context_menu_item = ({
                     }
                     case __('file.manager.contextmenu.new_file'): {
                         alert('new file');
+                        /**
+                         * ask for file name
+                         * dropdown for file extensions
+                         * input type="hidden" current_directory=""
+                         */
                         break;
                     }
                     case __('file.manager.contextmenu.new_directory'): {
-                        alert('new directory');
+                        file.new_directory(tr);
+                        /**
+                         * ask for directory name
+                         * input type="hidden" current_directory=""
+                         */
                         break;
                     }
                     case __('file.manager.contextmenu.cut'): {
@@ -586,10 +595,12 @@ file.list = (config, response) => {
                 });
             });
             li.data('file', node.url);
+            li.data('directory', node.directory);
             li.data('extension', node.extension);
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
+            li.data('directory', node.directory);
             li.data('extension', node.extension);
             li.addClass('name');
             li.html(node.name);
@@ -599,6 +610,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
+            li.data('directory', node.directory);
             li.data('extension', node.extension);
             li.addClass('modified');
             li.html(date('Y-m-d H:i', node.mtime));
@@ -608,6 +620,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
+            li.data('directory', node.directory);
             li.data('extension', node.extension);
             li.addClass('type');
             if(node.type.toLowerCase() === 'dir'){
@@ -623,6 +636,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
+            li.data('directory', node.directory);
             li.data('extension', node.extension);
             li.addClass('size');
             li.html(file.size(node.size));
@@ -977,6 +991,28 @@ file.open_file_with = (element) => {
                 }
             }
         }
+
+    });
+}
+
+file.new_directory = (element) => {
+    const route = {
+        new : {
+            directory: file.data.get('route.backend.new.directory')
+        },
+        // frontend : file.data.get('route.frontend.application')
+    };
+
+    const token = user.token();
+    header("Authorization", 'Bearer ' + token);
+    let node = {
+        "directory" : element.data('directory'),
+    }
+    let div = create('div');
+
+
+    request(route.new.directory, node, (url, data) => {
+
 
     });
 }
