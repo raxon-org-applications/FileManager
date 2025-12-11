@@ -176,8 +176,8 @@ file.context_menu = ({
         }
         table_tr.appendChild(td);
         tbody.appendChild(table_tr);
+        console.log('name: ' + item.name);
         table_tr.on('click', (event) => {
-            console.log('name: ' + item.name);
             file.open_file_with(tr);
         });
         table_tr.on('mouseover', (event) => {
