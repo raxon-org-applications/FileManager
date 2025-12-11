@@ -177,6 +177,7 @@ file.context_menu = ({
         table_tr.appendChild(td);
         tbody.appendChild(table_tr);
         table_tr.on('click', (event) => {
+            console.log('name: ' + item.name);
             file.open_file_with(tr);
         });
         table_tr.on('mouseover', (event) => {
@@ -193,56 +194,6 @@ file.context_menu = ({
         });
         tbody.appendChild(table_tr);
     }
-    table_tr = create('tr');
-    let td = create('td');
-    let i = create('i');
-    i.addClass('icon far fa-file');
-    i.on('mouseover', (event) => {
-        let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
-        if(keyboard_shortcut){
-            keyboard_shortcut.addClass('active');
-        }
-    });
-    i.on('mouseout', (event) => {
-        let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
-        if(keyboard_shortcut){
-            keyboard_shortcut.removeClass('active');
-        }
-    });
-    td.appendChild(i);
-    // td.html('<i class="icon far fa-file"></i>');
-    table_tr.appendChild(td);
-    console.log(table_tr);
-
-    td = create('td');
-    td.html('<i class="keyboard-shortcut">enter</i>');
-    table_tr.appendChild(td);
-    td = create('td');
-    td.html(__('file.manager.open'));
-    table_tr.appendChild(td);
-    td = create('td');
-    td.html('&#10219;');
-    let submenu = node?.submenu;
-    td.on('click', (event) => {
-        file.context_menu_item({event, submenu, section, tr, td});
-    });
-    table_tr.appendChild(td);
-    tbody.appendChild(table_tr);
-    table_tr.on('click', (event) => {
-        file.open_file_with(tr);
-    });
-    table_tr.on('mouseover', (event) => {
-        let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
-        if(keyboard_shortcut){
-            keyboard_shortcut.addClass('active');
-        }
-    });
-    table_tr.on('mouseout', (event) => {
-        let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
-        if(keyboard_shortcut){
-            keyboard_shortcut.removeClass('active');
-        }
-    });
     table.appendChild(tbody);
     /*
     li.on('click', (event) => {
