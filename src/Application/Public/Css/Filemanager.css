@@ -208,12 +208,12 @@ section[name="application-file-manager"] .dialog-new-directory .body input[type=
 
 section[name="application-file-manager"] .dialog-new-directory .body button[name="ok"] {
     width: 50%;
-    height: 30px;
+    height: 36px;
 }
 
 section[name="application-file-manager"] .dialog-new-directory .body button[name="cancel"] {
     width: 50%;
-    height: 30px;
+    height: 36px;
 }
 
 section[name="application-file-manager"] .body .loading {
