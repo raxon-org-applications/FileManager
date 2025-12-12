@@ -1030,6 +1030,8 @@ file.new_directory = (element) => {
     if(!section){
         return;
     }
+    const dialog = section.select('.dialog-manager-main');
+    div.style.zIndex = dialog.style.zIndex+1;
     section.appendChild(div);
     /*
     request(route.new.directory, node, (url, data) => {
