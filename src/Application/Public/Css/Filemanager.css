@@ -14,12 +14,12 @@ section[name="application-file-manager"] .dialog {
 section[name="application-file-manager"] .dialog-new-directory {
     width: 300px;
     min-width: 300px;
-    height: 150px;
+    height: 130px;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(200, 200, 200, 1);
     position: absolute;
-    left: calc(50% - 200px);
-    top: calc(50% - 75px);
+    left: calc(50% - 150px);
+    top: calc(50% - 65px);
 }
 
 section[name="application-file-manager"] .context-menu,
@@ -195,11 +195,11 @@ section[name="application-file-manager"] .body {
 }
 
 section[name="application-file-manager"] .dialog-new-directory .body {
-    height: 60px;
+    height: 80px;
 }
 
 section[name="application-file-manager"] .dialog-new-directory .body input[type="text"] {
-    width: calc(100% - 10px);
+    width: calc(100% - 14px);
     height: 30px;
     font-size: 12pt;
     margin: 0;
