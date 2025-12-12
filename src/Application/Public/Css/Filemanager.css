@@ -12,7 +12,8 @@ section[name="application-file-manager"] .dialog {
 }
 
 section[name="application-file-manager"] .dialog-new-directory {
-    width: 200px;
+    width: 300px;
+    min-width: 300px;
     height: 150px;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(200, 200, 200, 1);
@@ -194,7 +195,23 @@ section[name="application-file-manager"] .body {
 }
 
 section[name="application-file-manager"] .dialog-new-directory .body {
-    height: 120px;
+    height: 60px;
+}
+
+section[name="application-file-manager"] .dialog-new-directory .body input[type="text"] {
+    width: calc(100% - 10px);
+    height: 30px;
+    font-size: 12pt;
+    margin: 0;
+    padding: 5px;
+}
+
+section[name="application-file-manager"] .dialog-new-directory .body button[name="ok"] {
+    width: 50%;
+}
+
+section[name="application-file-manager"] .dialog-new-directory .body button[name="cancel"] {
+    width: 50%;
 }
 
 section[name="application-file-manager"] .body .loading {
