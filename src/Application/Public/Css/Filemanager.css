@@ -13,7 +13,7 @@ section[name="application-file-manager"] .dialog {
 
 section[name="application-file-manager"] .dialog-new-directory {
     width: 200px;
-    height: 100px;
+    height: 150px;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(200, 200, 200, 1);
     position: absolute;
