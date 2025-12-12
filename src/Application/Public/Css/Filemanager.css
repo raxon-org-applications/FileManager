@@ -193,6 +193,10 @@ section[name="application-file-manager"] .body {
     overflow: auto;
 }
 
+section[name="application-file-manager"] .dialog-new-directory .body {
+    height: 120px;
+}
+
 section[name="application-file-manager"] .body .loading {
     text-align: center;
     height: 150px;
