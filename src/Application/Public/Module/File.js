@@ -1021,9 +1021,13 @@ file.new_directory = (element) => {
     div.style.textAlign = 'center';
     div.style.width = '300px';
     div.style.height = '100px';
-    div.innerHTML = '<input type="text" name="name" placeholder="Name" />';
-    let body = element.closest('.body');
-    body.appendChild(div);
+    div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><input type="text" name="directory_new" placeholder="New directory" /></div>';
+    // let body = element.closest('.body');
+    const section = getSectionById(file.data.get('section.id'));
+    if(!section){
+        return;
+    }
+    section.appendChild(div);
     /*
     request(route.new.directory, node, (url, data) => {
 
