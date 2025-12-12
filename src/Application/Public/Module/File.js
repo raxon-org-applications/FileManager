@@ -1009,6 +1009,8 @@ file.new_directory = (element) => {
         "directory" : element.data('directory'),
     }
     let div = create('div');
+    div.addClass('dialog');
+    /*
     div.style.position = 'absolute';
     div.style.top = '50%';
     div.style.left = '50%';
@@ -1021,6 +1023,7 @@ file.new_directory = (element) => {
     div.style.textAlign = 'center';
     div.style.width = '300px';
     div.style.height = '100px';
+     */
     div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><input type="text" name="directory_new" placeholder="New directory" /></div>';
     // let body = element.closest('.body');
     const section = getSectionById(file.data.get('section.id'));
