@@ -11,6 +11,16 @@ section[name="application-file-manager"] .dialog {
     top: 50px;
 }
 
+section[name="application-file-manager"] .dialog-new-directory {
+    width: 400px;
+    height: 150px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(200, 200, 200, 1);
+    position: absolute;
+    left: calc(50% - 200px);
+    top: calc(50% - 75px);
+}
+
 section[name="application-file-manager"] .context-menu,
 section[name="application-file-manager"] .context-menu-item {
     width: 350px;

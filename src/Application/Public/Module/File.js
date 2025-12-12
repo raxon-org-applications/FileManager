@@ -1009,7 +1009,7 @@ file.new_directory = (element) => {
         "directory" : element.data('directory'),
     }
     let div = create('div');
-    div.addClass('dialog');
+    div.addClass('dialog dialog-new-directory');
     /*
     div.style.position = 'absolute';
     div.style.top = '50%';
