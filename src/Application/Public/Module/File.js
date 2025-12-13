@@ -1021,6 +1021,7 @@ file.rename = (element) => {
     };
     let editable = element.next('li');
     let source = editable.textContent;
+    editable.html('<form name="file-rename"><input type="hidden" name="source" value="' + source + '"><input type="text" name="destination" value="' + source + '"></form>');
     console.log(source);
     console.log(editable);
     console.log(element);
