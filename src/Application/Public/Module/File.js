@@ -1030,6 +1030,7 @@ file.delete = (element) => {
     const token = user.token();
     let node = {
         "url": element.data('url'),
+        "request-method": "DELETE"
     }
     header("Authorization", 'Bearer ' + token);
     request(route.delete, node, (url, response) => {
