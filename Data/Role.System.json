@@ -10,6 +10,10 @@
     {
       "name": "FileSystem:create",
       "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:rename",
+      "#class": "Account.Permission"
     }
   ]
 }

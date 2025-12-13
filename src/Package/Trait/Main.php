@@ -195,6 +195,14 @@ trait Main {
                 }                
             }
         }
+        $command = 'app install raxon/account -patch';
+        Core::execute($object, $command, $output, $notification);
+        if($output){
+            echo $output;
+        }
+        if($notification){
+            echo $notification;
+        }
     }
 
 }
