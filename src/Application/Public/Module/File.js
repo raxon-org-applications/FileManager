@@ -217,7 +217,7 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.rename'): {
-                        alert('rename');
+                        file.rename(tr);
                         break;
                     }
                     case __('file.manager.contextmenu.share'): {
