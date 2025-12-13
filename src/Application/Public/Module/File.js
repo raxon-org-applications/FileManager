@@ -1040,6 +1040,10 @@ file.rename = (element) => {
         });
     })
     destination.focus();
+    destination.on('blur', (event) => {
+        const refresh = section.select('.refresh');
+        refresh.click();
+    });
 }
 
 file.new_file = (element) => {
