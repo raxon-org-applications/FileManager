@@ -224,7 +224,7 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.delete'): {
-                        alert('delete');
+                        file.delete(element);
                         break;
                     }
                     case __('file.manager.contextmenu.audio_options'): {
