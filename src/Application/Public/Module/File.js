@@ -1070,11 +1070,14 @@ file.new_directory = (element) => {
     button_close.on('click', (event) => {
         div.remove();
     })
-    input_directory_new.on('click', (event) => {
-        const dialog_active = section.select('.dialog-active');
-        dialog_active?.removeClass('dialog-active');
-        div.addClass('dialog dialog-active dialog-new-directory');
+    div.on('click', (event) => {
+        div.addClass('dialog-active');
     });
+    /*
+    input_directory_new.on('click', (event) => {
+        div.addClass('dialog-active');
+    });
+     */
     input_directory_new.focus();
 }
 
