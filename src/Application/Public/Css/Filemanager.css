@@ -183,6 +183,17 @@ section[name="application-file-manager"] .body {
     overflow: auto;
 }
 
+section[name="application-file-manager"] .body form[name="file-rename"] input[type="text"]{
+    width: calc(100%);
+    height: 30px;
+    font-size: 12pt;
+    margin: 0;
+    padding: 5px;
+    border: 0;
+    color: rgba(255, 255, 255, 1);
+    background: transparent;
+}
+
 section[name="application-file-manager"] .dialog-new-directory,
 section[name="application-file-manager"] .dialog-new-file {
     width: 300px;
