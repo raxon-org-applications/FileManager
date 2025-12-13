@@ -90,7 +90,8 @@ file.context_menu = ({
     }
     file.data.set('context.menu.active', true);
     file.data.set('context.menu.time.active', microtime(true));
-    let dialog = section.select('.dialog');
+    // let dialog = section.select('.dialog');
+    const dialog = section.select('.dialog-manager-main');
     let td_icon = tr.select('.icon');
     let create_div = section.select('.context-menu');
     if(!create_div){
