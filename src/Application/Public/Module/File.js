@@ -1023,6 +1023,10 @@ file.rename = (element) => {
     let name = editable.textContent;
     editable.html('<form name="file-rename"><input type="hidden" name="source" value="' + name + '"><input type="text" name="destination" value="' + name + '"></form>');
     let destination = editable.select('input[name="destination"]');
+    let form_rename = editable.select('form[name="file-rename"]');
+    form_rename.on('submit', (event) => {
+        event.preventDefault();
+    });
     destination.on('change', (event) => {
         const token = user.token();
         let node = {
