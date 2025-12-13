@@ -1078,6 +1078,7 @@ file.new_directory = (element) => {
         div.addClass('dialog-active');
     });
      */
+    dialog.init("{{$id}}");
     input_directory_new.focus();
 }
 
