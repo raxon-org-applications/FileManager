@@ -596,13 +596,14 @@ file.list = (config, response) => {
                     'tr' : event.target.closest('li'),
                 });
             });
+            console.log(node);
             li.data('file', node.url);
-            li.data('directory', node.directory);
+            li.data('dir', node.directory);
             li.data('extension', node.extension);
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
-            li.data('directory', node.directory);
+            li.data('dir', node.directory);
             li.data('extension', node.extension);
             li.addClass('name');
             li.html(node.name);
@@ -612,7 +613,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
-            li.data('directory', node.directory);
+            li.data('dir', node.directory);
             li.data('extension', node.extension);
             li.addClass('modified');
             li.html(date('Y-m-d H:i', node.mtime));
@@ -622,7 +623,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
-            li.data('directory', node.directory);
+            li.data('dir', node.directory);
             li.data('extension', node.extension);
             li.addClass('type');
             if(node.type.toLowerCase() === 'dir'){
@@ -638,7 +639,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
-            li.data('directory', node.directory);
+            li.data('dir', node.directory);
             li.data('extension', node.extension);
             li.addClass('size');
             li.html(file.size(node.size));
