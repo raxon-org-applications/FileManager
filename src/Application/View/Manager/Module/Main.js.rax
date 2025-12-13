@@ -36,6 +36,7 @@ require(
             "route.backend.file.create.directory": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Directory/",
             "route.backend.file.create.file": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/File/",
             "route.backend.file.rename": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Rename/",
+            "route.backend.file.delete": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Delete/",
             "route.backend.extension": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}Entity/Extension/",
             "route.backend.tree": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/List/Tree/",
             "route.backend.upload": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Upload/",

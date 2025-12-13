@@ -1008,6 +1008,53 @@ file.open_file_with = (element) => {
     });
 }
 
+file.delete = (element) => {
+    const section = getSectionById(file.data.get('section.id'));
+    if(!section){
+        return;
+    }
+    const context_menu = section.select('.context-menu');
+    const context_menu_item = section.select('.context-menu-item');
+    file.data.delete('context.menu.active');
+    file.data.delete('context.menu.item.active');
+    if(context_menu){
+        context_menu.remove();
+    }
+    if(context_menu_item){
+        context_menu_item.remove();
+    }
+
+    const route = {
+        delete : file.data.get('route.backend.file.delete')
+    };
+    destination.on('change', (event) => {
+        const token = user.token();
+        let node = {
+            "url": element.data('url'),
+        }
+        header("Authorization", 'Bearer ' + token);
+        request(route.delete, node, (url, response) => {
+            const refresh = section.select('.refresh');
+            refresh.click();
+        });
+    })
+    destination.focus();
+    destination.on('blur', (event) => {
+        const token = user.token();
+        let node = {
+            "source": editable.data('dir') + editable.select('input[name="source"]').value,
+            "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
+        }
+        header("Authorization", 'Bearer ' + token);
+        request(route.rename, node, (url, response) => {
+            const refresh = section.select('.refresh');
+            refresh.click();
+        });
+    });
+}
+
+
+
 file.rename = (element) => {
     const section = getSectionById(file.data.get('section.id'));
     if(!section){
