@@ -268,8 +268,8 @@ address.bar = (config) => {
     }
     input.on('change', (event) => {
         const route = {
-            backend : file.data.get('route.backend.file'),
-            frontend : file.data.get('route.frontend.file')
+            backend : file.data.get('route.backend.file.list'),
+            frontend : file.data.get('route.frontend.file.list')
         };
         let node = {
             "directory" : input.val()
