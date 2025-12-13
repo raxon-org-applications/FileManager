@@ -1020,7 +1020,9 @@ file.new_directory = (element) => {
         // frontend : file.data.get('route.frontend.application')
     };
     let div = create('div');
-    div.addClass('dialog dialog-new-directory');
+    const dialog_active = section.select('.dialog-active');
+    dialog_active.removeClass('dialog-active');
+    div.addClass('dialog dialog-active dialog-new-directory');
     /*
     div.style.position = 'absolute';
     div.style.top = '50%';
