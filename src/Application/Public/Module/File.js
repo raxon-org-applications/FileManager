@@ -1037,7 +1037,7 @@ file.new_directory = (element) => {
     div.style.width = '300px';
     div.style.height = '100px';
      */
-    div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><form name="directory-new"></form><input type="text" name="directory_new" placeholder="New directory" /><br><button type="submit" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></div>';
+    div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><form name="directory-new"><input type="text" name="directory_new" placeholder="New directory" /><br><button type="submit" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></form></div>';
     // let body = element.closest('.body');
 
     const dialog = section.select('.dialog-manager-main');
@@ -1060,6 +1060,8 @@ file.new_directory = (element) => {
             div.remove();
         });
     });
+    // button_ok.on('click', (event) => {});
+
     let button_cancel = div.select('button[name="cancel"]');
     button_cancel.on('click', (event) => {
         div.remove();
