@@ -1041,8 +1041,16 @@ file.rename = (element) => {
     })
     destination.focus();
     destination.on('blur', (event) => {
-        const refresh = section.select('.refresh');
-        refresh.click();
+        const token = user.token();
+        let node = {
+            "source": editable.data('dir') + editable.select('input[name="source"]').value,
+            "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
+        }
+        header("Authorization", 'Bearer ' + token);
+        request(route.rename, node, (url, response) => {
+            const refresh = section.select('.refresh');
+            refresh.click();
+        });
     });
 }
 
