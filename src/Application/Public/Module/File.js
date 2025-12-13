@@ -1041,7 +1041,7 @@ file.rename = (element) => {
             "source": editable.data('dir') + editable.select('input[name="source"]').value,
             "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
         }
-        editable.html(editable.select('input[name="destination"]').value + '<i class="fa-solid fa-spinner"></i>');
+        editable.html(editable.select('input[name="destination"]').value + '<i class="fa-solid fa-gear"></i>');
         header("Authorization", 'Bearer ' + token);
         request(route.rename, node, (url, response) => {
             const refresh = section.select('.refresh');
