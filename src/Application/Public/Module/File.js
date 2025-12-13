@@ -424,7 +424,7 @@ file.context_menu_item = ({
                         break;
                     }
                     case __('file.manager.contextmenu.new_file'): {
-                        alert('new file');
+                        file.new_file(tr);
                         /**
                          * ask for file name
                          * dropdown for file extensions
@@ -434,10 +434,6 @@ file.context_menu_item = ({
                     }
                     case __('file.manager.contextmenu.new_directory'): {
                         file.new_directory(tr);
-                        /**
-                         * ask for directory name
-                         * input type="hidden" current_directory=""
-                         */
                         break;
                     }
                     case __('file.manager.contextmenu.cut'): {
@@ -1001,6 +997,67 @@ file.open_file_with = (element) => {
         }
 
     });
+}
+
+file.new_file = (element) => {
+    const section = getSectionById(file.data.get('section.id'));
+    if(!section){
+        return;
+    }
+    const context_menu = section.select('.context-menu');
+    const context_menu_item = section.select('.context-menu-item');
+    file.data.delete('context.menu.active');
+    file.data.delete('context.menu.item.active');
+    context_menu?.remove();
+    context_menu_item?.remove();
+    const route = {
+        new : {
+            file: file.data.get('route.backend.file.create.file')
+        },
+        // frontend : file.data.get('route.frontend.application')
+    };
+    let div = create('div');
+    const dialog_active = section.select('.dialog-active');
+    dialog_active.removeClass('dialog-active');
+    div.addClass('dialog dialog-active dialog-new-file');
+    div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New file</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><form name="file-new"><input type="text" name="file_new" placeholder="New filename" /><br><button type="submit" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></form></div>';
+    // let body = element.closest('.body');
+
+    const dialog = section.select('.dialog-manager-main');
+    div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
+    section.appendChild(div);
+    let form = div.select('form[name="file-new"]');
+    let input_directory_new = div.select('input[name="file_new"]');
+    let button_ok = div.select('button[name="ok"]');
+    form.on('submit', (event) => {
+        event.preventDefault();
+        const token = user.token();
+        let node = {
+            "type": "File",
+            "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
+        }
+        header("Authorization", 'Bearer ' + token);
+        request(route.new.directory, node, (url, response) => {
+            const refresh = section.select('.refresh');
+            refresh.click();
+            div.remove();
+        });
+    });
+    // button_ok.on('click', (event) => {});
+
+    let button_cancel = div.select('button[name="cancel"]');
+    button_cancel.on('click', (event) => {
+        div.remove();
+    });
+    let button_close = div.select('.close');
+    button_close.on('click', (event) => {
+        div.remove();
+    })
+    div.on('click', (event) => {
+        div.addClass('dialog-active');
+    });
+    dialog.init(file.data.get('section.id'));
+    input_directory_new.focus();
 }
 
 file.new_directory = (element) => {
