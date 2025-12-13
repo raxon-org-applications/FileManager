@@ -1027,6 +1027,16 @@ file.delete = (element) => {
     const route = {
         delete : file.data.get('route.backend.file.delete')
     };
+    const token = user.token();
+    let node = {
+        "url": element.data('url'),
+    }
+    header("Authorization", 'Bearer ' + token);
+    request(route.delete, node, (url, response) => {
+        const refresh = section.select('.refresh');
+        refresh.click();
+    });
+    /*
     destination.on('change', (event) => {
         const token = user.token();
         let node = {
@@ -1051,6 +1061,7 @@ file.delete = (element) => {
             refresh.click();
         });
     });
+     */
 }
 
 
