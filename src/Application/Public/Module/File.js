@@ -1030,8 +1030,8 @@ file.rename = (element) => {
     destination.on('change', (event) => {
         const token = user.token();
         let node = {
-            "source": editable.select('input[name="source"]').value,
-            "destination": editable.select('input[name="destination"]').value,
+            "source": editable.data('dir') + editable.select('input[name="source"]').value,
+            "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
         }
         header("Authorization", 'Bearer ' + token);
         request(route.rename, node, (url, response) => {
