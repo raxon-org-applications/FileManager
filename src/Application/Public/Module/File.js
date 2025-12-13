@@ -1041,7 +1041,7 @@ file.new_directory = (element) => {
     // let body = element.closest('.body');
 
     const dialog = section.select('.dialog-manager-main');
-    div.style.zIndex = dialog.style.zIndex+1;
+    div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
     section.appendChild(div);
     let form = div.select('form[name="directory-new"]');
     let input_directory_new = div.select('input[name="directory_new"]');
@@ -1078,7 +1078,7 @@ file.new_directory = (element) => {
         div.addClass('dialog-active');
     });
      */
-    dialog.init("{{$id}}");
+    dialog.init(file.data.get('section.id'));
     input_directory_new.focus();
 }
 
