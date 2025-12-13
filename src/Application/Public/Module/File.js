@@ -497,7 +497,7 @@ file.context_menu_item = ({
 }
 
 file.dirname = (url) => {
-    return url.substring(0, url.lastIndexOf('/'));
+    return url.substring(0, url.lastIndexOf('/')) + '/';
 }
 
 file.list = (config, response) => {
