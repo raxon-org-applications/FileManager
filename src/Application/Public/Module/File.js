@@ -1002,12 +1002,6 @@ file.new_directory = (element) => {
         },
         // frontend : file.data.get('route.frontend.application')
     };
-
-    const token = user.token();
-    header("Authorization", 'Bearer ' + token);
-    let node = {
-        "directory" : element.data('directory'),
-    }
     let div = create('div');
     div.addClass('dialog dialog-new-directory');
     /*
@@ -1033,12 +1027,31 @@ file.new_directory = (element) => {
     const dialog = section.select('.dialog-manager-main');
     div.style.zIndex = dialog.style.zIndex+1;
     section.appendChild(div);
-    /*
-    request(route.new.directory, node, (url, data) => {
-
-
+    let input_directory_new = div.select('input[name="directory_new"]');
+    let button_ok = div.select('button[name="ok"]');
+    let button_cancel = div.select('button[name="cancel"]');
+    button_ok.on('click', (event) => {
+        const token = user.token();
+        let node = {
+            "directory" : {
+                "current": element.data('directory'),
+                "new": input_directory_new.value
+            },
+        }
+        header("Authorization", 'Bearer ' + token);
+        request(route.new.directory, node, (url, response) => {
+            console.log(url);
+            console.log(response);
+            if(response?.node){
+                file.refresh(section);
+            }
+        });
+        div.remove();
     });
-     */
+    button_cancel.on('click', (event) => {
+        div.remove();
+    });
+    input_directory_new.focus();
 }
 
 file.section_active = (id) => {
