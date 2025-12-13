@@ -191,6 +191,8 @@ section[name="application-file-manager"] .body form[name="file-rename"] input[ty
     padding: 0;
     border: 0;
     color: rgba(255, 255, 255, 1);
+    outline: 0;
+    font-size: 12pt;
     background: transparent;
 }
 
