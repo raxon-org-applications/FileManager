@@ -1038,7 +1038,6 @@ file.new_directory = (element) => {
     section.appendChild(div);
     let input_directory_new = div.select('input[name="directory_new"]');
     let button_ok = div.select('button[name="ok"]');
-    let button_cancel = div.select('button[name="cancel"]');
     button_ok.on('click', (event) => {
         const token = user.token();
         let node = {
@@ -1055,9 +1054,14 @@ file.new_directory = (element) => {
         });
         div.remove();
     });
+    let button_cancel = div.select('button[name="cancel"]');
     button_cancel.on('click', (event) => {
         div.remove();
     });
+    let button_close = div.select('.close');
+    button_close.on('click', (event) => {
+        div.remove();
+    })
     input_directory_new.focus();
 }
 
