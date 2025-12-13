@@ -1051,13 +1051,9 @@ file.new_directory = (element) => {
         }
         header("Authorization", 'Bearer ' + token);
         request(route.new.directory, node, (url, response) => {
-            console.log(url);
-            console.log(response);
-            if(response?.node){
-                file.refresh(section);
-            }
+            file.refresh(section);
+            div.remove();
         });
-        div.remove();
     });
     let button_cancel = div.select('button[name="cancel"]');
     button_cancel.on('click', (event) => {
