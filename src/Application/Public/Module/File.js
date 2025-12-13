@@ -82,7 +82,7 @@ file.context_menu = ({
     event,
     node,
     section,
-    tr
+    element
 }) => {
     let is_active = file.data.get('context.menu.active');
     if(is_active){
@@ -92,7 +92,7 @@ file.context_menu = ({
     file.data.set('context.menu.time.active', microtime(true));
     // let dialog = section.select('.dialog');
     const dialog = section.select('.dialog-manager-main');
-    let td_icon = tr.select('.icon');
+    let td_icon = element.select('.icon');
     let create_div = section.select('.context-menu');
     if(!create_div){
         create_div = create('div');
@@ -101,7 +101,7 @@ file.context_menu = ({
         console.log(dialog.style.zIndex);
     }
     console.log(tr);
-    let calculate = tr.calculate('all');
+    let calculate = element.calculate('all');
     create_div.style.top = calculate.top + 'px';
     create_div.style.left = calculate.left + 'px';
     // create_div.style.top = event.clientY + 'px';
@@ -170,12 +170,12 @@ file.context_menu = ({
             console.log(submenu);
             td.html('&#10219;');
             td.on('click', (event) => {
-                file.context_menu_item({event, submenu, section, tr, td});
+                file.context_menu_item({event, submenu, section, element, td});
             });
             table_tr.appendChild(td);
             tbody.appendChild(table_tr);
             table_tr.on('click', (event) => {
-                file.context_menu_item({event, submenu, section, tr, td});
+                file.context_menu_item({event, submenu, section, element, td});
             });
         } else {
             td.html('');
@@ -185,7 +185,7 @@ file.context_menu = ({
                 console.log('name: ' + item.name);
                 switch(__(item.name)){
                     case __('file.manager.contextmenu.open_with'): {
-                        file.open_file_with(tr);
+                        file.open_file_with(element);
                         break;
                     }
                     case __('file.manager.contextmenu.download'): {
@@ -217,7 +217,7 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.rename'): {
-                        file.rename(tr);
+                        file.rename(element);
                         break;
                     }
                     case __('file.manager.contextmenu.share'): {
@@ -322,7 +322,7 @@ file.context_menu_item = ({
     event,
     submenu,
     section,
-    tr,
+    element,
     td
 }) => {
     let is_active = file.data.get('context.menu.item.active');
@@ -337,7 +337,7 @@ file.context_menu_item = ({
     console.log(event);
     console.log(submenu);
     console.log(section);
-    console.log(tr);
+    console.log(element);
     console.log(td);
     let td_calculation = td.calculate('all');
     console.log(td_calculation);
@@ -408,7 +408,7 @@ file.context_menu_item = ({
                 console.log(submenu);
                 table_td_submenu.html('&#10219;');
                 table_td_submenu.on('click', (event) => {
-                    file.context_menu_item({event, submenu, section, tr, td});
+                    file.context_menu_item({event, submenu, section, element, td});
                 });
             } else {
                 td.html('');
@@ -418,7 +418,7 @@ file.context_menu_item = ({
             table_tr_submenu.on('click', (event) => {
                 switch(__(menu_item.name)){
                     case __('file.manager.contextmenu.open_with'): {
-                        file.open_file_with(tr);
+                        file.open_file_with(element);
                         break;
                     }
                     case __('file.manager.contextmenu.download'): {
@@ -430,11 +430,11 @@ file.context_menu_item = ({
                         break;
                     }
                     case __('file.manager.contextmenu.new_file'): {
-                        file.new_file(tr);
+                        file.new_file(element);
                         break;
                     }
                     case __('file.manager.contextmenu.new_directory'): {
-                        file.new_directory(tr);
+                        file.new_directory(element);
                         break;
                     }
                     case __('file.manager.contextmenu.cut'): {
@@ -450,7 +450,7 @@ file.context_menu_item = ({
                         break;
                     }
                     case __('file.manager.contextmenu.rename'): {
-                        file.rename(tr);
+                        file.rename(element);
                         break;
                     }
                     case __('file.manager.contextmenu.share'): {
@@ -458,7 +458,7 @@ file.context_menu_item = ({
                         break;
                     }
                     case __('file.manager.contextmenu.delete'): {
-                        file.delete(tr);
+                        file.delete(element);
                         break;
                     }
                     case __('file.manager.contextmenu.audio_options'): {
@@ -546,6 +546,15 @@ file.list = (config, response) => {
             li.html('<i class="far fa-folder"></i>');
             li.data('dir', node.url);
             create_ul.appendChild(li);
+            li.on('click', (event) => {
+                //load context menu...
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
+            });
             li = create('li');
             li.data('dir', node.url);
             li.addClass('name');
@@ -595,7 +604,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node,
                     'section' : section,
-                    'tr' : event.target.closest('li'),
+                    'element' : event.target.closest('li'),
                 });
             });
             console.log(node);
