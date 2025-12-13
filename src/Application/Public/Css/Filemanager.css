@@ -11,17 +11,6 @@ section[name="application-file-manager"] .dialog {
     top: 50px;
 }
 
-section[name="application-file-manager"] .dialog-new-directory {
-    width: 300px;
-    min-width: 300px;
-    height: 120px;
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(200, 200, 200, 1);
-    position: absolute;
-    left: calc(50% - 150px);
-    top: calc(50% - 60px);
-}
-
 section[name="application-file-manager"] .context-menu,
 section[name="application-file-manager"] .context-menu-item {
     width: 350px;
@@ -192,6 +181,18 @@ section[name="application-file-manager"] .body {
     height: calc(100% - 120px);
     width: 100%;
     overflow: auto;
+}
+
+section[name="application-file-manager"] .dialog-new-directory,
+section[name="application-file-manager"] .dialog-new-file {
+    width: 300px;
+    min-width: 300px;
+    height: 120px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(200, 200, 200, 1);
+    position: absolute;
+    left: calc(50% - 150px);
+    top: calc(50% - 60px);
 }
 
 section[name="application-file-manager"] .dialog-new-directory .body,
