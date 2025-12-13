@@ -6,6 +6,10 @@
     {
       "name": "FileSystem:update",
       "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:create",
+      "#class": "Account.Permission"
     }
   ]
 }
