@@ -100,7 +100,6 @@ file.context_menu = ({
     } else {
         console.log(dialog.style.zIndex);
     }
-    console.log(tr);
     let calculate = element.calculate('all');
     create_div.style.top = calculate.top + 'px';
     create_div.style.left = calculate.left + 'px';
