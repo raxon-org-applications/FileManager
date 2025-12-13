@@ -1020,57 +1020,22 @@ file.rename = (element) => {
         rename : file.data.get('route.backend.file.rename')
     };
     let editable = element.next('li');
-    let source = editable.textContent;
-    editable.html('<form name="file-rename"><input type="hidden" name="source" value="' + source + '"><input type="text" name="destination" value="' + source + '"></form>');
-    console.log(source);
-    console.log(editable);
-    console.log(element);
-
-
-    /*
-    let div = create('div');
-    const dialog_active = section.select('.dialog-active');
-    dialog_active.removeClass('dialog-active');
-    div.addClass('dialog dialog-active dialog-new-file');
-    div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New file</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><form name="file-new"><input type="text" name="file_new" placeholder="New filename" /><br><button type="submit" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></form></div>';
-    // let body = element.closest('.body');
-
-    const dialog = section.select('.dialog-manager-main');
-    div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
-    section.appendChild(div);
-    let form = div.select('form[name="file-new"]');
-    let input_directory_new = div.select('input[name="file_new"]');
-    let button_ok = div.select('button[name="ok"]');
-    form.on('submit', (event) => {
-        event.preventDefault();
+    let name = editable.textContent;
+    editable.html('<form name="file-rename"><input type="hidden" name="source" value="' + name + '"><input type="text" name="destination" value="' + name + '"></form>');
+    let destination = editable.select('input[name="destination"]');
+    destination.focus();
+    destination.on('blur', (event) => {
         const token = user.token();
         let node = {
-            "type": "File",
-            "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
+            "source": editable.select('input[name="source"]').value,
+            "destination": editable.select('input[name="destination"]').value,
         }
         header("Authorization", 'Bearer ' + token);
-        request(route.new.file, node, (url, response) => {
+        request(route.rename, node, (url, response) => {
             const refresh = section.select('.refresh');
             refresh.click();
-            div.remove();
         });
-    });
-    // button_ok.on('click', (event) => {});
-
-    let button_cancel = div.select('button[name="cancel"]');
-    button_cancel.on('click', (event) => {
-        div.remove();
-    });
-    let button_close = div.select('.close');
-    button_close.on('click', (event) => {
-        div.remove();
     })
-    div.on('click', (event) => {
-        div.addClass('dialog-active');
-    });
-    dialog.init(file.data.get('section.id'));
-    input_directory_new.focus();
-     */
 }
 
 file.new_file = (element) => {
