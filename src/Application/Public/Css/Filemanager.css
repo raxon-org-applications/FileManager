@@ -194,11 +194,13 @@ section[name="application-file-manager"] .body {
     overflow: auto;
 }
 
-section[name="application-file-manager"] .dialog-new-directory .body {
+section[name="application-file-manager"] .dialog-new-directory .body,
+section[name="application-file-manager"] .dialog-new-file .body{
     height: 80px;
 }
 
-section[name="application-file-manager"] .dialog-new-directory .body input[type="text"] {
+section[name="application-file-manager"] .dialog-new-directory .body input[type="text"],
+section[name="application-file-manager"] .dialog-new-file .body input[type="text"]{
     width: calc(100% - 14px);
     height: 30px;
     font-size: 12pt;
@@ -207,16 +209,19 @@ section[name="application-file-manager"] .dialog-new-directory .body input[type=
     border: 0;
 }
 
-section[name="application-file-manager"] .dialog-new-directory .body input[type="text"]:focus-visible {
+section[name="application-file-manager"] .dialog-new-directory .body input[type="text"]:focus-visible,
+section[name="application-file-manager"] .dialog-new-file .body input[type="text"]:focus-visible {
     outline: 0;
 }
 
-section[name="application-file-manager"] .dialog-new-directory .body button[name="ok"] {
+section[name="application-file-manager"] .dialog-new-directory .body button[name="ok"],
+section[name="application-file-manager"] .dialog-new-file .body button[name="ok"] {
     width: 50%;
     height: 40px;
 }
 
-section[name="application-file-manager"] .dialog-new-directory .body button[name="cancel"] {
+section[name="application-file-manager"] .dialog-new-directory .body button[name="cancel"],
+section[name="application-file-manager"] .dialog-new-file .body button[name="cancel"] {
     width: 50%;
     height: 40px;
 }
