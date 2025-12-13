@@ -1037,7 +1037,7 @@ file.new_file = (element) => {
             "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
         }
         header("Authorization", 'Bearer ' + token);
-        request(route.new.directory, node, (url, response) => {
+        request(route.new.file, node, (url, response) => {
             const refresh = section.select('.refresh');
             refresh.click();
             div.remove();
