@@ -496,6 +496,10 @@ file.context_menu_item = ({
     section.appendChild(create_div);
 }
 
+file.dirname = (url) => {
+    return url.substring(0, url.lastIndexOf('/'));
+}
+
 file.list = (config, response) => {
     const section = getSectionById(file.data.get('section.id'));
     console.log(file.data.get('section.id'));
@@ -598,12 +602,12 @@ file.list = (config, response) => {
             });
             console.log(node);
             li.data('file', node.url);
-            li.data('dir', node.directory);
+            li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
-            li.data('dir', node.directory);
+            li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
             li.addClass('name');
             li.html(node.name);
@@ -613,7 +617,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
-            li.data('dir', node.directory);
+            li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
             li.addClass('modified');
             li.html(date('Y-m-d H:i', node.mtime));
@@ -623,7 +627,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
-            li.data('dir', node.directory);
+            li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
             li.addClass('type');
             if(node.type.toLowerCase() === 'dir'){
@@ -639,7 +643,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
-            li.data('dir', node.directory);
+            li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
             li.addClass('size');
             li.html(file.size(node.size));
@@ -1043,7 +1047,7 @@ file.new_directory = (element) => {
         const token = user.token();
         let node = {
             "type": "Directory",
-            "url": _('prototype').str_replace('../','', element.data('directory') + input_directory_new.value)
+            "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
         }
         header("Authorization", 'Bearer ' + token);
         request(route.new.directory, node, (url, response) => {
