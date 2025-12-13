@@ -1041,7 +1041,7 @@ file.rename = (element) => {
             "source": editable.data('dir') + editable.select('input[name="source"]').value,
             "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
         }
-        editable.html(editable.select('input[name="destination"]').value + '<img src="/Application/Filemanager/Svg/Spinner.svg" style="width: 16px; height: 16px; margin-left: 5px;">');
+        editable.html(editable.select('input[name="destination"]').value + '<i class="fas fa-spinner fa-spin"></i>');
         header("Authorization", 'Bearer ' + token);
         request(route.rename, node, (url, response) => {
             const refresh = section.select('.refresh');
