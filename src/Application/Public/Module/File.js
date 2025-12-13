@@ -1037,15 +1037,17 @@ file.new_directory = (element) => {
     div.style.width = '300px';
     div.style.height = '100px';
      */
-    div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><input type="text" name="directory_new" placeholder="New directory" /><br><button type="button" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></div>';
+    div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><form name="directory-new"></form><input type="text" name="directory_new" placeholder="New directory" /><br><button type="submit" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></div>';
     // let body = element.closest('.body');
 
     const dialog = section.select('.dialog-manager-main');
     div.style.zIndex = dialog.style.zIndex+1;
     section.appendChild(div);
+    let form = div.select('form[name="directory-new"]');
     let input_directory_new = div.select('input[name="directory_new"]');
     let button_ok = div.select('button[name="ok"]');
-    button_ok.on('click', (event) => {
+    form.on('submit', (event) => {
+        event.preventDefault();
         const token = user.token();
         let node = {
             "type": "Directory",
