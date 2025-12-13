@@ -247,13 +247,15 @@ file.context_menu = ({
         table_tr.on('mouseover', (event) => {
             let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
             if(keyboard_shortcut){
-                keyboard_shortcut?.addClass('active');
+                console.log(keyboard_shortcut);
+                keyboard_shortcut.addClass('active');
             }
         });
         table_tr.on('mouseout', (event) => {
             let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
             if (keyboard_shortcut) {
-                keyboard_shortcut?.removeClass('active');
+                console.log(keyboard_shortcut);
+                keyboard_shortcut.removeClass('active');
             }
         });
         tbody.appendChild(table_tr);
