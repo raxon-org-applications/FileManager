@@ -1023,8 +1023,7 @@ file.rename = (element) => {
     let name = editable.textContent;
     editable.html('<form name="file-rename"><input type="hidden" name="source" value="' + name + '"><input type="text" name="destination" value="' + name + '"></form>');
     let destination = editable.select('input[name="destination"]');
-    destination.focus();
-    destination.on('blur', (event) => {
+    destination.on('change', (event) => {
         const token = user.token();
         let node = {
             "source": editable.select('input[name="source"]').value,
@@ -1036,6 +1035,7 @@ file.rename = (element) => {
             refresh.click();
         });
     })
+    destination.focus();
 }
 
 file.new_file = (element) => {
