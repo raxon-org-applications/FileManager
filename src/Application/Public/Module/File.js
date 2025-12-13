@@ -307,6 +307,12 @@ file.context_menu = ({
     if(close){
         close.on('click', (event) => {
             file.data.delete('context.menu.active');
+            const menu_item_active = file.data.get('context.menu.item.active');
+            if(menu_item_active){
+                let div_menu_item = section.select('.context-menu-item');
+                file.data.delete('context.menu.item.active');
+                div_menu_item.remove();
+            }
             create_div.remove();
         });
     }
