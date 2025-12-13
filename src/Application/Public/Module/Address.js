@@ -22,7 +22,7 @@ address.title = (directory) => {
         return;
     }
     let title = head.data('title');
-    let split = title?.split(' | ');
+    let split = title?.split(' | ') ?? [];
     while(split?.length > 1){
         split.pop();
     }
