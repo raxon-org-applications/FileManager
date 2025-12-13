@@ -1051,7 +1051,8 @@ file.new_directory = (element) => {
         }
         header("Authorization", 'Bearer ' + token);
         request(route.new.directory, node, (url, response) => {
-            file.refresh(section);
+            const refresh = section.select('.refresh');
+            refresh.click();
             div.remove();
         });
     });
