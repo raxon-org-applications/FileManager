@@ -1020,6 +1020,8 @@ file.rename = (element) => {
         rename : file.data.get('route.backend.file.rename')
     };
     let editable = element.next('li');
+    let source = editable.value;
+    console.log(source);
     console.log(editable);
     console.log(element);
 
