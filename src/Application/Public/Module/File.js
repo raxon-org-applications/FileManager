@@ -1019,8 +1019,9 @@ file.rename = (element) => {
     const route = {
         rename : file.data.get('route.backend.file.rename')
     };
-    const input_make = element.nextElementSibling();
-    console.log(input_make);
+    if (element.nextElementSibling) {
+        console.log(element.nextElementSibling); // this will log the next sibling
+    }
     console.log(element);
 
 
