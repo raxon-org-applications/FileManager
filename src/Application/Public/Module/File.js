@@ -1009,8 +1009,13 @@ file.rename = (element) => {
     const context_menu_item = section.select('.context-menu-item');
     file.data.delete('context.menu.active');
     file.data.delete('context.menu.item.active');
-    context_menu?.remove();
-    context_menu_item?.remove();
+    if(context_menu){
+        context_menu.remove();
+    }
+    if(context_menu_item){
+        context_menu_item.remove();
+    }
+
     const route = {
         rename : file.data.get('route.backend.file.rename')
     };
@@ -1072,8 +1077,12 @@ file.new_file = (element) => {
     const context_menu_item = section.select('.context-menu-item');
     file.data.delete('context.menu.active');
     file.data.delete('context.menu.item.active');
-    context_menu?.remove();
-    context_menu_item?.remove();
+    if(context_menu){
+        context_menu.remove();
+    }
+    if(context_menu_item){
+        context_menu_item.remove();
+    }
     const route = {
         new : {
             file: file.data.get('route.backend.file.create.file')
@@ -1133,8 +1142,12 @@ file.new_directory = (element) => {
     const context_menu_item = section.select('.context-menu-item');
     file.data.delete('context.menu.active');
     file.data.delete('context.menu.item.active');
-    context_menu?.remove();
-    context_menu_item?.remove();
+    if(context_menu){
+        context_menu.remove();
+    }
+    if(context_menu_item){
+        context_menu_item.remove();
+    }
     const route = {
         new : {
             directory: file.data.get('route.backend.file.create.directory')
