@@ -1003,9 +1003,9 @@ file.new_directory = (element) => {
         return;
     }
     const context_menu = section.select('.context-menu');
-    const context_menu_item = context_menu.select('.context-menu-item');
-    context_menu.remove();
-    context_menu_item.remove();
+    const context_menu_item = section.select('.context-menu-item');
+    context_menu?.remove();
+    context_menu_item?.remove();
     const route = {
         new : {
             directory: file.data.get('route.backend.new.directory')
