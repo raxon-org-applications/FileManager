@@ -1004,6 +1004,8 @@ file.new_directory = (element) => {
     }
     const context_menu = section.select('.context-menu');
     const context_menu_item = section.select('.context-menu-item');
+    file.data.delete('context.menu.active');
+    file.data.delete('context.menu.item.active');
     context_menu?.remove();
     context_menu_item?.remove();
     const route = {
