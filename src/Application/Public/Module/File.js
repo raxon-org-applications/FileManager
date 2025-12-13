@@ -1010,7 +1010,7 @@ file.new_directory = (element) => {
     context_menu_item?.remove();
     const route = {
         new : {
-            directory: file.data.get('route.backend.new.directory')
+            directory: file.data.get('route.backend.file.create.directory')
         },
         // frontend : file.data.get('route.frontend.application')
     };
@@ -1042,10 +1042,8 @@ file.new_directory = (element) => {
     button_ok.on('click', (event) => {
         const token = user.token();
         let node = {
-            "directory" : {
-                "current": element.data('directory'),
-                "new": input_directory_new.value
-            },
+            "type": "Directory",
+            "url": _('prototype').str_replace('../','', element.data('directory') + input_directory_new.value)
         }
         header("Authorization", 'Bearer ' + token);
         request(route.new.directory, node, (url, response) => {
