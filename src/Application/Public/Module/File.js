@@ -998,6 +998,14 @@ file.open_file_with = (element) => {
 }
 
 file.new_directory = (element) => {
+    const section = getSectionById(file.data.get('section.id'));
+    if(!section){
+        return;
+    }
+    const context_menu = section.select('.context-menu');
+    const context_menu_item = context_menu.select('.context-menu-item');
+    context_menu.remove();
+    context_menu_item.remove();
     const route = {
         new : {
             directory: file.data.get('route.backend.new.directory')
@@ -1022,10 +1030,7 @@ file.new_directory = (element) => {
      */
     div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><input type="text" name="directory_new" placeholder="New directory" /><br><button type="button" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></div>';
     // let body = element.closest('.body');
-    const section = getSectionById(file.data.get('section.id'));
-    if(!section){
-        return;
-    }
+
     const dialog = section.select('.dialog-manager-main');
     div.style.zIndex = dialog.style.zIndex+1;
     section.appendChild(div);
