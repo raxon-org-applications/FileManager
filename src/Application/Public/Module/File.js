@@ -1134,9 +1134,23 @@ file.rename = (element) => {
     destination.focus();
     destination.on('blur', (event) => {
         const token = user.token();
-        let node = {
-            "source": editable.data('dir') + editable.select('input[name="source"]').value,
-            "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
+        let node;
+        if(editable.data('type') === 'File'){
+            node = {
+                "source": editable.data('dir') + editable.select('input[name="source"]').value,
+                "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
+            }
+        } else {
+            let dir = editable.data('dir');
+            dir = dir.split('/');
+            dir.pop();
+            dir.pop();
+            dir.push('');
+            dir = dir.join('/');
+            node = {
+                "source": dir + editable.select('input[name="source"]').value,
+                "destination": dir + editable.select('input[name="destination"]').value,
+            }
         }
         header("Authorization", 'Bearer ' + token);
         request(route.rename, node, (url, response) => {
