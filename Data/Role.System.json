@@ -18,6 +18,11 @@
     {
       "name": "FileSystem:delete",
       "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:read",
+      "#class": "Account.Permission",
+      "#comment": "Application PhotoViewer read"
     }
   ]
 }
