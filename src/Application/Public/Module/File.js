@@ -1116,9 +1116,9 @@ file.rename = (element) => {
             let dir = editable.data('dir');
             dir = dir.split('/');
             dir.pop();
-            dir.pop()
+            dir.pop();
+            dir.push('/');
             dir = dir.join('/');
-            alert(dir);
             node = {
                 "source": dir + editable.select('input[name="source"]').value,
                 "destination": dir + editable.select('input[name="destination"]').value,
