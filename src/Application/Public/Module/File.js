@@ -1029,7 +1029,7 @@ file.delete = (element) => {
     };
     const token = user.token();
     let node = {
-        "url": element.data('url'),
+        "url": element.data('file'),
         "request-method": "DELETE"
     }
     header("Authorization", 'Bearer ' + token);
