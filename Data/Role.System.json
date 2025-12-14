@@ -14,6 +14,10 @@
     {
       "name": "FileSystem:rename",
       "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:delete",
+      "#class": "Account.Permission"
     }
   ]
 }
