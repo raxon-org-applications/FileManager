@@ -544,6 +544,7 @@ file.list = (config, response) => {
             li.addClass('icon');
             li.html('<i class="far fa-folder"></i>');
             li.data('dir', node.url);
+            li.data('type', node.type);
             create_ul.appendChild(li);
             li.on('click', (event) => {
                 //load context menu...
@@ -556,6 +557,7 @@ file.list = (config, response) => {
             });
             li = create('li');
             li.data('dir', node.url);
+            li.data('type', node.type);
             li.addClass('name');
             li.html(node.name);
             li.on('click', (event) => {
@@ -564,6 +566,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('dir', node.url);
+            li.data('type', node.type);
             li.addClass('modified');
             li.html(date('Y-m-d H:i', node.mtime));
             li.on('click', (event) => {
@@ -572,6 +575,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('dir', node.url);
+            li.data('type', node.type);
             li.addClass('type');
             if(node.type.toLowerCase() === 'dir'){
                 li.html(__('file.manager.dir'));
@@ -587,6 +591,7 @@ file.list = (config, response) => {
             create_ul.appendChild(li);
             li = create('li');
             li.data('dir', node.url);
+            li.data('type', node.type);
             li.addClass('size');
             li.html(file.size(node.size));
             li.on('click', (event) => {
@@ -610,11 +615,13 @@ file.list = (config, response) => {
             li.data('file', node.url);
             li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
+            li.data('type', node.type);
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
             li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
+            li.data('type', node.type);
             li.addClass('name');
             li.html(node.name);
             li.on('click', (event) => {
@@ -625,6 +632,7 @@ file.list = (config, response) => {
             li.data('file', node.url);
             li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
+            li.data('type', node.type);
             li.addClass('modified');
             li.html(date('Y-m-d H:i', node.mtime));
             li.on('click', (event) => {
@@ -635,6 +643,7 @@ file.list = (config, response) => {
             li.data('file', node.url);
             li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
+            li.data('type', node.type);
             li.addClass('type');
             if(node.type.toLowerCase() === 'dir'){
                 li.html(__('file.manager.dir'));
@@ -651,6 +660,7 @@ file.list = (config, response) => {
             li.data('file', node.url);
             li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);
+            li.data('type', node.type);
             li.addClass('size');
             li.html(file.size(node.size));
             li.on('click', (event) => {
