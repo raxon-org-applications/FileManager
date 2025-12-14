@@ -1038,42 +1038,24 @@ file.delete = (element) => {
         delete : file.data.get('route.backend.file.delete')
     };
     const token = user.token();
-    let node = {
-        "url": element.data('file'),
-        "request-method": "DELETE"
+    let node;
+    if(element.data('type') === 'File'){
+        node = {
+            "url": element.data('file'),
+            "request-method": "DELETE"
+        }
+    } else {
+        node = {
+            "url": element.data('dir'),
+            "request-method": "DELETE"
+        }
     }
+
     header("Authorization", 'Bearer ' + token);
     request(route.delete, node, (url, response) => {
         const refresh = section.select('.refresh');
         refresh.click();
-    });
-    /*
-    destination.on('change', (event) => {
-        const token = user.token();
-        let node = {
-            "url": element.data('url'),
-        }
-        header("Authorization", 'Bearer ' + token);
-        request(route.delete, node, (url, response) => {
-            const refresh = section.select('.refresh');
-            refresh.click();
-        });
-    })
-    destination.focus();
-    destination.on('blur', (event) => {
-        const token = user.token();
-        let node = {
-            "source": editable.data('dir') + editable.select('input[name="source"]').value,
-            "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
-        }
-        header("Authorization", 'Bearer ' + token);
-        request(route.rename, node, (url, response) => {
-            const refresh = section.select('.refresh');
-            refresh.click();
-        });
-    });
-     */
-}
+    });}
 
 
 
