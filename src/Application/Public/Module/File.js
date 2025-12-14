@@ -1105,58 +1105,65 @@ file.rename = (element) => {
         event.preventDefault();
     });
     destination.on('change', (event) => {
-        const token = user.token();
-        let node;
-        if(editable.data('type') === 'File'){
-            node = {
-                "source": editable.data('dir') + editable.select('input[name="source"]').value,
-                "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
+        if(!editable.data('submit')){
+            const token = user.token();
+            let node;
+            if(editable.data('type') === 'File'){
+                node = {
+                    "source": editable.data('dir') + editable.select('input[name="source"]').value,
+                    "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
+                }
+            } else {
+                let dir = editable.data('dir');
+                dir = dir.split('/');
+                dir.pop();
+                dir.pop();
+                dir.push('');
+                dir = dir.join('/');
+                node = {
+                    "source": dir + editable.select('input[name="source"]').value,
+                    "destination": dir + editable.select('input[name="destination"]').value,
+                }
             }
-        } else {
-            let dir = editable.data('dir');
-            dir = dir.split('/');
-            dir.pop();
-            dir.pop();
-            dir.push('');
-            dir = dir.join('/');
-            node = {
-                "source": dir + editable.select('input[name="source"]').value,
-                "destination": dir + editable.select('input[name="destination"]').value,
-            }
+            editable.data('submit', true);
+            editable.html(editable.select('input[name="destination"]').value + '&nbsp;<i class="fas fa-spinner fa-spin"></i>');
+            header("Authorization", 'Bearer ' + token);
+            request(route.rename, node, (url, response) => {
+                const refresh = section.select('.refresh');
+                refresh.click();
+            });
         }
-        editable.html(editable.select('input[name="destination"]').value + '&nbsp;<i class="fas fa-spinner fa-spin"></i>');
-        header("Authorization", 'Bearer ' + token);
-        request(route.rename, node, (url, response) => {
-            const refresh = section.select('.refresh');
-            refresh.click();
-        });
     })
     destination.focus();
     destination.on('blur', (event) => {
-        const token = user.token();
-        let node;
-        if(editable.data('type') === 'File'){
-            node = {
-                "source": editable.data('dir') + editable.select('input[name="source"]').value,
-                "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
+        if(!editable.data('submit')){
+            const token = user.token();
+            let node;
+            if(editable.data('type') === 'File'){
+                node = {
+                    "source": editable.data('dir') + editable.select('input[name="source"]').value,
+                    "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
+                }
+            } else {
+                let dir = editable.data('dir');
+                dir = dir.split('/');
+                dir.pop();
+                dir.pop();
+                dir.push('');
+                dir = dir.join('/');
+                node = {
+                    "source": dir + editable.select('input[name="source"]').value,
+                    "destination": dir + editable.select('input[name="destination"]').value,
+                }
             }
-        } else {
-            let dir = editable.data('dir');
-            dir = dir.split('/');
-            dir.pop();
-            dir.pop();
-            dir.push('');
-            dir = dir.join('/');
-            node = {
-                "source": dir + editable.select('input[name="source"]').value,
-                "destination": dir + editable.select('input[name="destination"]').value,
-            }
+            editable.html(editable.select('input[name="destination"]').value + '&nbsp;<i class="fas fa-spinner fa-spin"></i>');
+            editable.data('submit', true);
+            header("Authorization", 'Bearer ' + token);
+            request(route.rename, node, (url, response) => {
+                const refresh = section.select('.refresh');
+                refresh.click();
+            });
         }
-        header("Authorization", 'Bearer ' + token);
-        request(route.rename, node, (url, response) => {
-            const refresh = section.select('.refresh');
-            refresh.click();
-        });
     });
 }
 
