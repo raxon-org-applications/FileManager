@@ -1106,18 +1106,18 @@ file.rename = (element) => {
     });
     destination.on('change', (event) => {
         const token = user.token();
+        let node;
         if(editable.data('type') === 'File'){
-            let node = {
+            node = {
                 "source": editable.data('dir') + editable.select('input[name="source"]').value,
                 "destination": editable.data('dir') + editable.select('input[name="destination"]').value,
             }
         } else {
-            let node = {
+            node = {
                 "source": file.dirname(editable.data('dir')) + editable.select('input[name="source"]').value,
                 "destination": file.dirname(editable.data('dir')) + editable.select('input[name="destination"]').value,
             }
         }
-
         editable.html(editable.select('input[name="destination"]').value + '&nbsp;<i class="fas fa-spinner fa-spin"></i>');
         header("Authorization", 'Bearer ' + token);
         request(route.rename, node, (url, response) => {
