@@ -222,6 +222,7 @@ file.context_menu = ({
                             let temp = element.data('file').split(element.data('dir'));
                             let name = temp.pop();
                             let item = {
+                                'type': 'File',
                                 'dir' : element.data('dir'),
                                 'file' : element.data('file'),
                                 'name' : name,
