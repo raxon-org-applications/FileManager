@@ -254,6 +254,16 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.paste'): {
+                        const context_menu = section.select('.context-menu');
+                        const context_menu_item = section.select('.context-menu-item');
+                        file.data.delete('context.menu.active');
+                        file.data.delete('context.menu.item.active');
+                        if(context_menu){
+                            context_menu.remove();
+                        }
+                        if(context_menu_item){
+                            context_menu_item.remove();
+                        }
                         if(element.data('type') === 'File'){
                             console.log(element.data('dir'));
                             console.log(element.data('file'));
