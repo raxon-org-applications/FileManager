@@ -264,14 +264,27 @@ file.context_menu = ({
                         if(context_menu_item){
                             context_menu_item.remove();
                         }
+                        const route = {
+                            rename : file.data.get('route.backend.file.rename')
+                        };
                         if(element.data('type') === 'File'){
-                            console.log(element.data('dir'));
-                            console.log(element.data('file'));
-
+                            let cut = file.data.get('clipboard.cut') ?? [];
+                            let index;
+                            for(index=0; index < cut.length; index++){
+                                let cut_item = cut[index];
+                                let node = {
+                                    source : cut_item.file,
+                                    destination : element.data('dir') + cut_item.name
+                                };
+                                const token = user.token();
+                                header("Authorization", 'Bearer ' + token);
+                                request(route.rename, node, (url, response) => {
+                                    const refresh = section.select('.refresh');
+                                    refresh.click();
+                                });
+                            }
+                            file.data.delete('clipboard.cut');
                         } else {
-                            const route = {
-                                rename : file.data.get('route.backend.file.rename')
-                            };
                             let cut = file.data.get('clipboard.cut') ?? [];
                             let index;
                             for(index=0; index < cut.length; index++){
