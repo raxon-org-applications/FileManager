@@ -265,6 +265,7 @@ file.context_menu = ({
                             let temp = element.data('file').split(element.data('dir'));
                             let name = temp.pop();
                             let item = {
+                                'type': 'File',
                                 'dir' : element.data('dir'),
                                 'file' : element.data('file'),
                                 'name' : name,
@@ -286,8 +287,29 @@ file.context_menu = ({
                                 file.data.set('clipboard.copy', copy);
                             }
                         } else {
-                            console.log(element.data('dir'));
-                            console.log(element.data('file'));
+                            let temp = element.data('file').split('/');
+                            temp.pop();
+                            let name = temp.pop();
+                            let item = {
+                                'type': 'Directory',
+                                'dir' : element.data('dir'),
+                                'name' : name,
+                            }
+                            file.data.delete('clipboard.cut');
+                            let copy = file.data.get('clipboard.copy') ?? [];
+                            let index;
+                            let is_found = false;
+                            for(index = 0; index < copy.length; index++){
+                                let copy_item = copy[index];
+                                if(item.file === copy_item.file){
+                                    is_found = true;
+                                    break;
+                                }
+                            }
+                            if(!is_found){
+                                copy.push(item);
+                                file.data.set('clipboard.copy', copy);
+                            }
                         }
                         break;
                     }
@@ -360,18 +382,36 @@ file.context_menu = ({
                             let copy = file.data.get('clipboard.copy') ?? [];
                             for(index=0; index < copy.length; index++){
                                 let copy_item = copy[index];
-                                let node = {
-                                    source : copy_item.file,
-                                    destination : element.data('dir') + copy_item.name
-                                };
-                                console.log(node);
-                                console.log(route.copy);
-                                const token = user.token();
-                                header("Authorization", 'Bearer ' + token);
-                                request(route.copy, node, (url, response) => {
-                                    const refresh = section.select('.refresh');
-                                    refresh.click();
-                                });
+                                if(copy_item.type === 'File'){
+                                    let node = {
+                                        source : copy_item.file,
+                                        destination : element.data('dir') + copy_item.name
+                                    };
+                                    console.log(node);
+                                    console.log(route.copy);
+                                    const token = user.token();
+                                    header("Authorization", 'Bearer ' + token);
+                                    request(route.copy, node, (url, response) => {
+                                        const refresh = section.select('.refresh');
+                                        refresh.click();
+                                    });
+                                } else {
+                                    let node = {
+                                        source : copy_item.dir,
+                                        destination : element.data('dir') + copy_item.name
+                                    };
+                                    console.log(node);
+                                    console.log(route.copy);
+                                    /*
+                                    const token = user.token();
+                                    header("Authorization", 'Bearer ' + token);
+                                    request(route.copy, node, (url, response) => {
+                                        const refresh = section.select('.refresh');
+                                        refresh.click();
+                                    });
+                                     */
+                                }
+
                             }
                             file.data.delete('clipboard.copy');
                         }
