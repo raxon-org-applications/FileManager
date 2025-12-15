@@ -247,44 +247,26 @@ file.context_menu = ({
                             console.log(element.data('dir'));
                             console.log(element.data('file'));
                         } else {
-                            console.log(element.data('dir'));
-                            console.log(element.data('file'));
-
+                            const route = {
+                                rename : file.data.get('route.backend.file.rename')
+                            };
                             let cut = file.data.get('clipboard.cut') ?? [];
                             let index;
                             for(index=0; index < cut.length; index++){
                                 let cut_item = cut[index];
-                                console.log(cut_item);
-                                // let cut_item_url = cut_item.dir + cut_item.name + '.' + cut_item.extension;
+                                let node = {
+                                    source : cut_item.file,
+                                    destination : element.data('dir') + cut_item.name
+                                };
+                                const token = user.token();
+                                header("Authorization", 'Bearer ' + token);
+                                request(route.rename, node, (url, response) => {
+                                    const refresh = section.select('.refresh');
+                                    refresh.click();
+                                });
                             }
-                            /*
-                            let temp = element.data('file').split(element.data('dir'));
-                            let name = temp.pop();
-                            let item = {
-                                'dir' : element.data('dir'),
-                                'file' : element.data('file'),
-                                'name' : name,
-                                'extension' : element.data('extension')
-                            }
-                            let cut = file.data.get('clipboard.cut') ?? [];
-                            let index;
-                            let is_found = false;
-                            for(index = 0; index < cut.length; index++){
-                                let cut_item = cut[index];
-                                if(item.file === cut_item.file){
-                                    is_found = true;
-                                    break;
-                                }
-                            }
-                            if(!is_found){
-                                cut.push(item);
-                                file.data.set('clipboard.cut', cut);
-                            }
-                            console.log(cut);
-                             */
-
+                            file.data.delete('clipboard.cut');
                         }
-                        alert('paste');
                         break;
                     }
                     case __('file.manager.contextmenu.rename'): {
