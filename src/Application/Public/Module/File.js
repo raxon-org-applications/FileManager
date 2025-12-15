@@ -267,6 +267,7 @@ file.context_menu = ({
                         if(element.data('type') === 'File'){
                             console.log(element.data('dir'));
                             console.log(element.data('file'));
+
                         } else {
                             const route = {
                                 rename : file.data.get('route.backend.file.rename')
