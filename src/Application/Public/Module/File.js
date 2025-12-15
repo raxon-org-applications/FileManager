@@ -289,7 +289,6 @@ file.context_menu = ({
                             console.log(element.data('dir'));
                             console.log(element.data('file'));
                         }
-                        alert('copy');
                         break;
                     }
                     case __('file.manager.contextmenu.paste'): {
@@ -304,7 +303,8 @@ file.context_menu = ({
                             context_menu_item.remove();
                         }
                         const route = {
-                            rename : file.data.get('route.backend.file.rename')
+                            rename : file.data.get('route.backend.file.rename'),
+                            copy : file.data.get('route.backend.file.copy')
                         };
                         if(element.data('type') === 'File'){
                             let cut = file.data.get('clipboard.cut') ?? [];
