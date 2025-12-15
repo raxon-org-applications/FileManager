@@ -910,6 +910,16 @@ file.open = (event) => {
     if(!section){
         return;
     }
+    const context_menu = section.select('.context-menu');
+    const context_menu_item = section.select('.context-menu-item');
+    file.data.delete('context.menu.active');
+    file.data.delete('context.menu.item.active');
+    if(context_menu){
+        context_menu.remove();
+    }
+    if(context_menu_item){
+        context_menu_item.remove();
+    }
     if (event.detail === 1) {
         const list = section.select('.list li');
         const element = event.target.closest('li');
@@ -966,6 +976,20 @@ file.open = (event) => {
 }
 
 file.open_file_with = (element) => {
+    const section = getSectionById(file.data.get('section.id'));
+    if(!section){
+        return;
+    }
+    const context_menu = section.select('.context-menu');
+    const context_menu_item = section.select('.context-menu-item');
+    file.data.delete('context.menu.active');
+    file.data.delete('context.menu.item.active');
+    if(context_menu){
+        context_menu.remove();
+    }
+    if(context_menu_item){
+        context_menu_item.remove();
+    }
     const route = {
         extension : file.data.get('route.backend.extension'),
         frontend : file.data.get('route.frontend.application')
