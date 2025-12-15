@@ -385,10 +385,8 @@ file.context_menu = ({
                                 if(copy_item.type === 'File'){
                                     let node = {
                                         source : copy_item.file,
-                                        destination : element.data('dir') + copy_item.name
+                                        destination : element.data('dir') + copy_item.name + '/'
                                     };
-                                    console.log(node);
-                                    console.log(route.copy);
                                     const token = user.token();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.copy, node, (url, response) => {
