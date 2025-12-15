@@ -357,6 +357,23 @@ file.context_menu = ({
                                 });
                             }
                             file.data.delete('clipboard.cut');
+                            let copy = file.data.get('clipboard.copy') ?? [];
+                            for(index=0; index < copy.length; index++){
+                                let copy_item = copy[index];
+                                let node = {
+                                    source : copy_item.file,
+                                    destination : element.data('dir') + copy_item.name
+                                };
+                                console.log(node);
+                                console.log(route.copy);
+                                const token = user.token();
+                                header("Authorization", 'Bearer ' + token);
+                                request(route.copy, node, (url, response) => {
+                                    const refresh = section.select('.refresh');
+                                    refresh.click();
+                                });
+                            }
+                            file.data.delete('clipboard.copy');
                         }
                         break;
                     }
