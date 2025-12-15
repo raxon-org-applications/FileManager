@@ -373,8 +373,11 @@ file.context_menu = ({
                                     const token = user.token();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.rename, node, (url, response) => {
-                                        const refresh = section.select('.refresh');
-                                        refresh.click();
+                                        const address = section.select('input[name="address"]');
+                                        if(address){
+                                            address.value = node.destination;
+                                            address.trigger('change');
+                                        }
                                     });
                                 }
 
@@ -421,8 +424,11 @@ file.context_menu = ({
                                     const token = user.token();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.rename, node, (url, response) => {
-                                        const refresh = section.select('.refresh');
-                                        refresh.click();
+                                        const address = section.select('input[name="address"]');
+                                        if(address){
+                                            address.value = node.destination;
+                                            address.trigger('change');
+                                        }
                                     });
                                 }
                             }
