@@ -227,6 +227,7 @@ file.context_menu = ({
                                 'name' : name,
                                 'extension' : element.data('extension')
                             }
+                            file.data.delete('clipboard.copy');
                             let cut = file.data.get('clipboard.cut') ?? [];
                             let index;
                             let is_found = false;
@@ -250,6 +251,44 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.copy'): {
+                        const context_menu = section.select('.context-menu');
+                        const context_menu_item = section.select('.context-menu-item');
+                        file.data.delete('context.menu.active');
+                        file.data.delete('context.menu.item.active');
+                        if(context_menu){
+                            context_menu.remove();
+                        }
+                        if(context_menu_item){
+                            context_menu_item.remove();
+                        }
+                        if(element.data('type') === 'File'){
+                            let temp = element.data('file').split(element.data('dir'));
+                            let name = temp.pop();
+                            let item = {
+                                'dir' : element.data('dir'),
+                                'file' : element.data('file'),
+                                'name' : name,
+                                'extension' : element.data('extension')
+                            }
+                            file.data.delete('clipboard.cut');
+                            let copy = file.data.get('clipboard.copy') ?? [];
+                            let index;
+                            let is_found = false;
+                            for(index = 0; index < copy.length; index++){
+                                let copy_item = copy[index];
+                                if(item.file === copy_item.file){
+                                    is_found = true;
+                                    break;
+                                }
+                            }
+                            if(!is_found){
+                                copy.push(item);
+                                file.data.set('clipboard.copy', copy);
+                            }
+                        } else {
+                            console.log(element.data('dir'));
+                            console.log(element.data('file'));
+                        }
                         alert('copy');
                         break;
                     }
@@ -284,6 +323,21 @@ file.context_menu = ({
                                 });
                             }
                             file.data.delete('clipboard.cut');
+                            let copy = file.data.get('clipboard.copy') ?? [];
+                            for(index=0; index < copy.length; index++){
+                                let copy_item = copy[index];
+                                let node = {
+                                    source : copy_item.file,
+                                    destination : element.data('dir') + copy_item.name
+                                };
+                                const token = user.token();
+                                header("Authorization", 'Bearer ' + token);
+                                request(route.copy, node, (url, response) => {
+                                    const refresh = section.select('.refresh');
+                                    refresh.click();
+                                });
+                            }
+                            file.data.delete('clipboard.copy');
                         } else {
                             let cut = file.data.get('clipboard.cut') ?? [];
                             let index;
