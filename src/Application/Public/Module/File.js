@@ -233,14 +233,9 @@ file.context_menu = ({
                             }
                             console.log(cut);
                         } else {
-
+                            console.log(element.data('dir'));
+                            console.log(element.data('file'));
                         }
-                        console.log(element);
-                        console.log(element.data('type'));
-                        console.log(element.data('dir'));
-                        console.log(element.data('file'));
-                        console.log(element.data('extension'));
-                        alert('cut');
                         break;
                     }
                     case __('file.manager.contextmenu.copy'): {
@@ -248,6 +243,44 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.paste'): {
+                        if(element.data('type') === 'File'){
+                            console.log(element.data('dir'));
+                            console.log(element.data('file'));
+                        } else {
+                            console.log(element.data('dir'));
+                            console.log(element.data('file'));
+
+                            let cut = file.data.get('clipboard.cut') ?? [];
+                            let index;
+                            console.log(cut);
+
+                            /*
+                            let temp = element.data('file').split(element.data('dir'));
+                            let name = temp.pop();
+                            let item = {
+                                'dir' : element.data('dir'),
+                                'file' : element.data('file'),
+                                'name' : name,
+                                'extension' : element.data('extension')
+                            }
+                            let cut = file.data.get('clipboard.cut') ?? [];
+                            let index;
+                            let is_found = false;
+                            for(index = 0; index < cut.length; index++){
+                                let cut_item = cut[index];
+                                if(item.file === cut_item.file){
+                                    is_found = true;
+                                    break;
+                                }
+                            }
+                            if(!is_found){
+                                cut.push(item);
+                                file.data.set('clipboard.cut', cut);
+                            }
+                            console.log(cut);
+                             */
+
+                        }
                         alert('paste');
                         break;
                     }
