@@ -16,6 +16,10 @@
       "#class": "Account.Permission"
     },
     {
+      "name": "FileSystem:copy",
+      "#class": "Account.Permission"
+    },
+    {
       "name": "FileSystem:delete",
       "#class": "Account.Permission"
     },
