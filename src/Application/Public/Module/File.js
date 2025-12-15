@@ -287,7 +287,7 @@ file.context_menu = ({
                                 file.data.set('clipboard.copy', copy);
                             }
                         } else {
-                            let temp = element.data('file').split('/');
+                            let temp = element.data('dir').split('/');
                             temp.pop();
                             let name = temp.pop();
                             let item = {
