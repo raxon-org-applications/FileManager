@@ -367,16 +367,29 @@ file.context_menu = ({
                             let index;
                             for(index=0; index < cut.length; index++){
                                 let cut_item = cut[index];
-                                let node = {
-                                    source : cut_item.file,
-                                    destination : element.data('dir') + cut_item.name
-                                };
-                                const token = user.token();
-                                header("Authorization", 'Bearer ' + token);
-                                request(route.rename, node, (url, response) => {
-                                    const refresh = section.select('.refresh');
-                                    refresh.click();
-                                });
+                                if(cut_item.type === 'File'){
+                                    let node = {
+                                        source : cut_item.file,
+                                        destination : element.data('dir') + cut_item.name
+                                    };
+                                    const token = user.token();
+                                    header("Authorization", 'Bearer ' + token);
+                                    request(route.rename, node, (url, response) => {
+                                        const refresh = section.select('.refresh');
+                                        refresh.click();
+                                    });
+                                } else {
+                                    let node = {
+                                        source : cut_item.dir,
+                                        destination : element.data('dir') + cut_item.name  + '/'
+                                    };
+                                    const token = user.token();
+                                    header("Authorization", 'Bearer ' + token);
+                                    request(route.rename, node, (url, response) => {
+                                        const refresh = section.select('.refresh');
+                                        refresh.click();
+                                    });
+                                }
                             }
                             file.data.delete('clipboard.cut');
                             let copy = file.data.get('clipboard.copy') ?? [];
@@ -405,7 +418,6 @@ file.context_menu = ({
                                         refresh.click();
                                     });
                                 }
-
                             }
                             file.data.delete('clipboard.copy');
                         }
