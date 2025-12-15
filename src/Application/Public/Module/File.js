@@ -252,8 +252,11 @@ file.context_menu = ({
 
                             let cut = file.data.get('clipboard.cut') ?? [];
                             let index;
-                            console.log(cut);
-
+                            for(index=0; index < cut.length; index++){
+                                let cut_item = cut[index];
+                                console.log(cut_item);
+                                // let cut_item_url = cut_item.dir + cut_item.name + '.' + cut_item.extension;
+                            }
                             /*
                             let temp = element.data('file').split(element.data('dir'));
                             let name = temp.pop();
