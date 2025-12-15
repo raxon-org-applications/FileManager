@@ -217,7 +217,21 @@ file.context_menu = ({
                                 'name' : name,
                                 'extension' : element.data('extension')
                             }
-                            console.log(item);
+                            let cut = file.data.get('clipboard.cut') ?? [];
+                            let index;
+                            let is_found = false;
+                            for(index = 0; index < cut.length; index++){
+                                let cut_item = cut[index];
+                                if(item.file === cut_item.file){
+                                    is_found = true;
+                                    break;
+                                }
+                            }
+                            if(!is_found){
+                                cut.push(item);
+                                file.data.set('clipboard.cut', cut);
+                            }
+                            console.log(cut);
                         } else {
 
                         }
