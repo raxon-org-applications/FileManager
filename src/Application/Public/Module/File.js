@@ -187,7 +187,7 @@ file.context_menu = ({
                         if(element.data('type') === 'File'){
                             file.open_file_with(element);
                         } else {
-                            file.open(element);
+                            file.open(event);
                         }
                         break;
                     }
