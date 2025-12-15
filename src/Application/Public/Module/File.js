@@ -208,6 +208,7 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.cut'): {
+                        console.log(element);
                         alert('cut');
                         break;
                     }
