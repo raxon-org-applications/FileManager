@@ -187,7 +187,7 @@ file.context_menu = ({
                         if(element.data('type') === 'File'){
                             file.open_file_with(element);
                         } else {
-                            file.open(event);
+                            file.open(element);
                         }
                         break;
                     }
@@ -940,7 +940,12 @@ file.open = (event) => {
             }
         }
     } else {
-        const element = event.target.closest('li');
+        let element;
+        if(!event.target){
+           element = event;
+        } else {
+           element = event.target.closest('li');
+        }
         const address = section.select('input[name="address"]');
         if(
             element &&
