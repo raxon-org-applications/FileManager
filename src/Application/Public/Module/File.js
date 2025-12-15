@@ -245,8 +245,29 @@ file.context_menu = ({
 
                             console.log(cut);
                         } else {
-                            console.log(element.data('dir'));
-                            console.log(element.data('file'));
+                            let temp = element.data('dir').split('/');
+                            temp.pop();
+                            let name = temp.pop();
+                            let item = {
+                                'type': 'Directory',
+                                'dir' : element.data('dir'),
+                                'name' : name,
+                            }
+                            file.data.delete('clipboard.copy');
+                            let cut = file.data.get('clipboard.cut') ?? [];
+                            let index;
+                            let is_found = false;
+                            for(index = 0; index < cut.length; index++){
+                                let cut_item = cut[index];
+                                if(item.file === cut_item.file){
+                                    is_found = true;
+                                    break;
+                                }
+                            }
+                            if(!is_found){
+                                cut.push(item);
+                                file.data.set('clipboard.cut', cut);
+                            }
                         }
                         break;
                     }
