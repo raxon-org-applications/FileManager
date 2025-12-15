@@ -208,6 +208,19 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.cut'): {
+                        if(element.data('type') === 'File'){
+                            let temp = element.data('file').split(element.data('dir'));
+                            let name = temp.pop();
+                            let item = {
+                                'dir' : element.data('dir'),
+                                'file' : element.data('file'),
+                                'name' : name,
+                                'extension' : element.data('extension')
+                            }
+                            console.log(item);
+                        } else {
+
+                        }
                         console.log(element);
                         console.log(element.data('type'));
                         console.log(element.data('dir'));
