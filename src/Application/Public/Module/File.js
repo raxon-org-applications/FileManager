@@ -208,6 +208,16 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.cut'): {
+                        const context_menu = section.select('.context-menu');
+                        const context_menu_item = section.select('.context-menu-item');
+                        file.data.delete('context.menu.active');
+                        file.data.delete('context.menu.item.active');
+                        if(context_menu){
+                            context_menu.remove();
+                        }
+                        if(context_menu_item){
+                            context_menu_item.remove();
+                        }
                         if(element.data('type') === 'File'){
                             let temp = element.data('file').split(element.data('dir'));
                             let name = temp.pop();
@@ -231,6 +241,7 @@ file.context_menu = ({
                                 cut.push(item);
                                 file.data.set('clipboard.cut', cut);
                             }
+
                             console.log(cut);
                         } else {
                             console.log(element.data('dir'));
