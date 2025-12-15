@@ -209,6 +209,10 @@ file.context_menu = ({
                     }
                     case __('file.manager.contextmenu.cut'): {
                         console.log(element);
+                        console.log(element.data('type'));
+                        console.log(element.data('dir'));
+                        console.log(element.data('file'));
+                        console.log(element.data('extension'));
                         alert('cut');
                         break;
                     }
