@@ -184,7 +184,11 @@ file.context_menu = ({
                 console.log('name: ' + item.name);
                 switch(__(item.name)){
                     case __('file.manager.contextmenu.open_with'): {
-                        file.open_file_with(element);
+                        if(element.data('type') === 'File'){
+                            file.open_file_with(element);
+                        } else {
+                            file.open(element);
+                        }
                         break;
                     }
                     case __('file.manager.contextmenu.download'): {
