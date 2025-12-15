@@ -242,8 +242,6 @@ file.context_menu = ({
                                 cut.push(item);
                                 file.data.set('clipboard.cut', cut);
                             }
-
-                            console.log(cut);
                         } else {
                             let temp = element.data('dir').split('/');
                             temp.pop();
@@ -405,6 +403,7 @@ file.context_menu = ({
                             let index;
                             for(index=0; index < cut.length; index++){
                                 let cut_item = cut[index];
+                                console.log(cut_item);
                                 if(cut_item.type === 'File'){
                                     let node = {
                                         source : cut_item.file,
